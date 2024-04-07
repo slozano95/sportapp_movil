@@ -4,14 +4,14 @@ import 'package:sportapp_movil/plan_selector_view.dart';
 
 import 'UI/components.dart';
 
-class ScheduleDeportologo extends StatefulWidget {
-  const ScheduleDeportologo({super.key});
+class CalendarActivities extends StatefulWidget {
+  const CalendarActivities({super.key});
 
   @override
-  _ScheduleDeportologoState createState() => _ScheduleDeportologoState();
+  _CalendarActivities createState() => _CalendarActivities();
 }
 
-class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
+class _CalendarActivities extends State<CalendarActivities> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +35,10 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cita Deportólogo",
+                    Text("Calendario",
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),
-                    const Text(
-                      "Agendar sesión",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 14),
                     GestureDetector(
                       onTap: () {
                         openDropdown();
