@@ -28,6 +28,7 @@ class UIComponents {
             height: 51,
             child: Center(
                 child: Text(title,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 16,
                         color: AppColors.white,
