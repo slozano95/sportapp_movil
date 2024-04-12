@@ -3,6 +3,7 @@ import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/current_session_view.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
+import 'package:sportapp_movil/training_plan_view.dart';
 
 import 'UI/components.dart';
 
@@ -135,7 +136,7 @@ class _PlanSelectorState extends State<PlanSelector> {
               goToScheduleDeportologo();
               break;
             case PlanFeatures.trainingPlan:
-              goToCurrentSession();
+              goToTrainingPlan();
               break;
             default:
               break;
@@ -183,6 +184,13 @@ class _PlanSelectorState extends State<PlanSelector> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CurrentSessionView()),
+    );
+  }
+
+  void goToTrainingPlan() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => TrainingPlanView()),
     );
   }
 }
