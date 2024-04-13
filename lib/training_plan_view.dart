@@ -65,13 +65,15 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                       ],
                     )
                   ]))),
-      UIComponents.tabBar(context)
+      UIComponents.tabBar(context, TabItem.home)
     ])));
   }
 
   Widget activityCell(String name, String image) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          goToCurrentSession();
+        },
         child: Container(
             height: 200,
             child:

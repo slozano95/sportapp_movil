@@ -3,6 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/calendar_activities.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:sportapp_movil/profile_view.dart';
+
+enum TabItem { home, profile, calendar, book }
 
 class UIComponents {
   static Widget navBar() {
@@ -55,9 +58,11 @@ class UIComponents {
                         fontWeight: FontWeight.w700)))));
   }
 
-  static Widget tabBar(BuildContext context) {
-    return Container(
-        child: Row(children: [
+  static Widget tabBar(
+    BuildContext context,
+    TabItem currentTab,
+  ) {
+    return Row(children: [
       Expanded(
           child: GestureDetector(
               onTap: () {
@@ -66,11 +71,31 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => PlanSelector()),
                 );
               },
-              child: Container(
+              child: SizedBox(
                   height: 54,
-                  child: const Center(
+                  child: Center(
                       child: Image(
-                          image: AssetImage("assets/icon_home.png"),
+                          image: const AssetImage("assets/icon_home.png"),
+                          color: currentTab == TabItem.home
+                              ? AppColors.grey
+                              : AppColors.orange,
+                          width: 35))))),
+      Expanded(
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileView()),
+                );
+              },
+              child: SizedBox(
+                  height: 54,
+                  child: Center(
+                      child: Image(
+                          image: const AssetImage("assets/icon_profile.png"),
+                          color: currentTab == TabItem.profile
+                              ? AppColors.grey
+                              : AppColors.orange,
                           width: 35))))),
       Expanded(
           child: GestureDetector(
@@ -80,11 +105,14 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => CalendarActivities()),
                 );
               },
-              child: Container(
+              child: SizedBox(
                   height: 54,
-                  child: const Center(
+                  child: Center(
                       child: Image(
-                          image: AssetImage("assets/icon_profile.png"),
+                          image: const AssetImage("assets/icon_book.png"),
+                          color: currentTab == TabItem.book
+                              ? AppColors.grey
+                              : AppColors.orange,
                           width: 35))))),
       Expanded(
           child: GestureDetector(
@@ -94,27 +122,16 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => CalendarActivities()),
                 );
               },
-              child: Container(
-                  height: 54,
-                  child: const Center(
-                      child: Image(
-                          image: AssetImage("assets/icon_book.png"),
-                          width: 35))))),
-      Expanded(
-          child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CalendarActivities()),
-                );
-              },
-              child: Container(
+              child: SizedBox(
                 height: 54,
-                child: const Center(
+                child: Center(
                     child: Image(
-                        image: AssetImage("assets/icon_calendar.png"),
+                        image: const AssetImage("assets/icon_calendar.png"),
+                        color: currentTab == TabItem.calendar
+                            ? AppColors.grey
+                            : AppColors.orange,
                         width: 35)),
               )))
-    ]));
+    ]);
   }
 }

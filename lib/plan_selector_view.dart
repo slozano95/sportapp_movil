@@ -124,7 +124,7 @@ class _PlanSelectorState extends State<PlanSelector> {
                       ],
                     )
                   ]))),
-      UIComponents.tabBar(context)
+      UIComponents.tabBar(context, TabItem.home)
     ])));
   }
 
@@ -136,7 +136,7 @@ class _PlanSelectorState extends State<PlanSelector> {
               goToScheduleDeportologo();
               break;
             case PlanFeatures.heartRate:
-              goToCalendar();
+              // goToCalendar();
               break;
             case PlanFeatures.trainingPlan:
               goToTrainingPlan();

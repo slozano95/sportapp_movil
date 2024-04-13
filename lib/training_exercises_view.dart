@@ -93,7 +93,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       ],
                     )
                   ])))),
-      UIComponents.tabBar(context)
+      UIComponents.tabBar(context, TabItem.home)
     ])));
   }
 
