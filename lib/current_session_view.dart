@@ -160,7 +160,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                             }))
                           ])
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context)
     ])));
   }
 

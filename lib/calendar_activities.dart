@@ -65,7 +65,6 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
     }
   }
 
-
   void _onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
     setState(() {
       _selectedDay = null;
@@ -85,98 +84,96 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Calendario'),
-        ),
-        
-      body: Column(
-        children: [
-                    TableCalendar(
-                        locale: "es_ES",
-                        rowHeight: 43,
-                        headerStyle: 
-                          HeaderStyle(formatButtonVisible: false, titleCentered: true),
-                        availableGestures: AvailableGestures.all,
-                        selectedDayPredicate:(day) => isSameDay(_selectedDay, day),
-                        focusedDay:_focusedDay,
-                        firstDay: kFirstDay,
-                        lastDay: kLastDay,
-                        rangeStartDay: _rangeStart,
-                        rangeEndDay: _rangeEnd,
-                        calendarFormat: _calendarFormat,
-                        rangeSelectionMode: _rangeSelectionMode,
-                        eventLoader: _getEventsForDay,
-                        startingDayOfWeek: StartingDayOfWeek.monday,
-                        onDaySelected: _onDaySelected,
-                        onRangeSelected: _onRangeSelected,
-                        onFormatChanged: (format) {
-                          if (_calendarFormat != format) {
-                            setState(() {
-                              _calendarFormat = format;
-                            });
-                          }
-                        },
-                        onPageChanged: (focusedDay) {
-                          _focusedDay = focusedDay;
-                        },
-                        calendarStyle: const CalendarStyle(
-                          todayDecoration: BoxDecoration(
-                            color: AppColors.orange,
-                            shape: BoxShape.circle,
-                          ),
-                          selectedDecoration: BoxDecoration(
-                            color: AppColors.orange,
-                            shape: BoxShape.circle,
-                          ),
-                          selectedTextStyle: TextStyle(color: Colors.white),
-                          todayTextStyle: TextStyle(color: Colors.white),
-                       
-                        ),
-              
-                    ),
-                    const SizedBox(height: 8.0),
-                    Expanded(
-                      child: ValueListenableBuilder<List<Event>>(
-                        valueListenable: _selectedEvents,
-                        builder: (context, value, _) {
-                          return ListView.builder(
-                            itemCount: value.length,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 10.0,
-                                  vertical: 4.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: ListTile(
-                                  onTap: () => print('${value[index]}'),
-                                  title: Text('${value[index]}'),
-                                ),
-                    );
+        body: SafeArea(
+            child: Column(children: [
+      Container(
+          padding: const EdgeInsets.fromLTRB(38, 12, 38, 0),
+          child: Row(
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    goBack();
                   },
+                  child: const Image(
+                      image: AssetImage("assets/icon_back.png"), width: 30)),
+            ],
+          )),
+      TableCalendar(
+        locale: "es_ES",
+        rowHeight: 43,
+        headerStyle:
+            HeaderStyle(formatButtonVisible: false, titleCentered: true),
+        availableGestures: AvailableGestures.all,
+        selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+        focusedDay: _focusedDay,
+        firstDay: kFirstDay,
+        lastDay: kLastDay,
+        rangeStartDay: _rangeStart,
+        rangeEndDay: _rangeEnd,
+        calendarFormat: _calendarFormat,
+        rangeSelectionMode: _rangeSelectionMode,
+        eventLoader: _getEventsForDay,
+        startingDayOfWeek: StartingDayOfWeek.monday,
+        onDaySelected: _onDaySelected,
+        onRangeSelected: _onRangeSelected,
+        onFormatChanged: (format) {
+          if (_calendarFormat != format) {
+            setState(() {
+              _calendarFormat = format;
+            });
+          }
+        },
+        onPageChanged: (focusedDay) {
+          _focusedDay = focusedDay;
+        },
+        calendarStyle: const CalendarStyle(
+          todayDecoration: BoxDecoration(
+            color: AppColors.orange,
+            shape: BoxShape.circle,
+          ),
+          selectedDecoration: BoxDecoration(
+            color: AppColors.orange,
+            shape: BoxShape.circle,
+          ),
+          selectedTextStyle: TextStyle(color: Colors.white),
+          todayTextStyle: TextStyle(color: Colors.white),
+        ),
+      ),
+      const SizedBox(height: 8.0),
+      Expanded(
+        child: ValueListenableBuilder<List<Event>>(
+          valueListenable: _selectedEvents,
+          builder: (context, value, _) {
+            return ListView.builder(
+              itemCount: value.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                    vertical: 4.0,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: ListTile(
+                    onTap: () => print('${value[index]}'),
+                    title: Text('${value[index]}'),
+                  ),
                 );
               },
-            ),
-          ),
-        UIComponents.tabBar()
-        ],
+            );
+          },
+        ),
       ),
-    );
+      UIComponents.tabBar(context)
+    ])));
+  }
+
+  void goBack() {
+    Navigator.of(context).pop();
   }
 }
-
-
-
-
-
-
-
-
-

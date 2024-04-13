@@ -124,7 +124,7 @@ class _PlanSelectorState extends State<PlanSelector> {
                       ],
                     )
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context)
     ])));
   }
 
@@ -182,12 +182,14 @@ class _PlanSelectorState extends State<PlanSelector> {
       MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
     );
   }
-    void goToCalendar() {
+
+  void goToCalendar() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CalendarActivities()),
-);
-    }
+    );
+  }
+
   void goToCurrentSession() {
     Navigator.push(
       context,

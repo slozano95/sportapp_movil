@@ -65,7 +65,7 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                       ],
                     )
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context)
     ])));
   }
 
