@@ -63,7 +63,8 @@ class UIComponents {
               child: const Center(
                   child: Image(
                       image: AssetImage("assets/icon_calendar.png"),
-                      width: 35)))),
+                      width: 35)),
+                )),
     ]));
   }
 }
