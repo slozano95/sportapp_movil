@@ -169,7 +169,7 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
           },
         ),
       ),
-      UIComponents.tabBar(context)
+      UIComponents.tabBar(context, TabItem.calendar)
     ])));
   }
 

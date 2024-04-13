@@ -19,4 +19,9 @@ class AppTypography {
     fontFamily: fontFamily,
     fontSize: 16,
   );
+  static TextStyle medium = const TextStyle(
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  );
 }
