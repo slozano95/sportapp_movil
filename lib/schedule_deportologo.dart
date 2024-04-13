@@ -80,7 +80,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: AppColors.orange),
+                              color: AppColors.grey),
                           child: const Row(children: [
                             Text(
                               "",
@@ -148,13 +148,19 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
-                    title: const Text('Presencial'),
+                    title: const Text('Santiago no sabe que poner acá 1'),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
-                    title: const Text('Virtual'),
+                    title: const Text('Santiago no sabe que poner acá 2'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Santiago no sabe que poner acá 3'),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
