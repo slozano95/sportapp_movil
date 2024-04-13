@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/calendar_activities.dart';
+import 'package:sportapp_movil/plan_selector_view.dart';
 
 class UIComponents {
   static Widget navBar() {
@@ -53,35 +55,66 @@ class UIComponents {
                         fontWeight: FontWeight.w700)))));
   }
 
-  static Widget tabBar() {
+  static Widget tabBar(BuildContext context) {
     return Container(
         child: Row(children: [
       Expanded(
-          child: Container(
-              height: 54,
-              child: const Center(
-                  child: Image(
-                      image: AssetImage("assets/icon_home.png"), width: 35)))),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PlanSelector()),
+                );
+              },
+              child: Container(
+                  height: 54,
+                  child: const Center(
+                      child: Image(
+                          image: AssetImage("assets/icon_home.png"),
+                          width: 35))))),
       Expanded(
-          child: Container(
-              height: 54,
-              child: const Center(
-                  child: Image(
-                      image: AssetImage("assets/icon_profile.png"),
-                      width: 35)))),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarActivities()),
+                );
+              },
+              child: Container(
+                  height: 54,
+                  child: const Center(
+                      child: Image(
+                          image: AssetImage("assets/icon_profile.png"),
+                          width: 35))))),
       Expanded(
-          child: Container(
-              height: 54,
-              child: const Center(
-                  child: Image(
-                      image: AssetImage("assets/icon_book.png"), width: 35)))),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarActivities()),
+                );
+              },
+              child: Container(
+                  height: 54,
+                  child: const Center(
+                      child: Image(
+                          image: AssetImage("assets/icon_book.png"),
+                          width: 35))))),
       Expanded(
-          child: Container(
-              height: 54,
-              child: const Center(
-                  child: Image(
-                      image: AssetImage("assets/icon_calendar.png"),
-                      width: 35)))),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarActivities()),
+                );
+              },
+              child: Container(
+                height: 54,
+                child: const Center(
+                    child: Image(
+                        image: AssetImage("assets/icon_calendar.png"),
+                        width: 35)),
+              )))
     ]));
   }
 }

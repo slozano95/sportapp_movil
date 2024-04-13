@@ -96,7 +96,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                       saveSession();
                     }))
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context)
     ])));
   }
 

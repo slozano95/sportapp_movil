@@ -124,7 +124,7 @@ class _PlanSelectorState extends State<PlanSelector> {
                       ],
                     )
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context)
     ])));
   }
 
