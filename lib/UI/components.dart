@@ -22,10 +22,28 @@ class UIComponents {
         onTap: onPressed,
         child: Container(
             width: 166,
+            height: 50,
             decoration: BoxDecoration(
                 color: AppColors.orange,
                 borderRadius: BorderRadius.circular(5)),
-            height: 51,
+            child: Center(
+                child: Text(title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 16,
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w700)))));
+  }
+
+  static Widget step(String title, VoidCallback onPressed) {
+    return GestureDetector(
+        onTap: onPressed,
+        child: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+                color: AppColors.orange,
+                borderRadius: BorderRadius.circular(5)),
             child: Center(
                 child: Text(title,
                     textAlign: TextAlign.center,
