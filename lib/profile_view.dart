@@ -92,11 +92,11 @@ class _ProfileViewState extends State<ProfileView> {
                     Row(
                       children: [
                         const SizedBox(width: 50),
-                        Text("30 KG\IMC",
+                        Text("30 KG\nIMC",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
                         const Spacer(),
-                        Text("26 KG\IMC",
+                        Text("26 KG\nIMC",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
                         const SizedBox(width: 50),

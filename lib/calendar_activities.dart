@@ -65,25 +65,6 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
     }
   }
 
-  void _onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
-    setState(() {
-      _selectedDay = null;
-      _focusedDay = focusedDay;
-      _rangeStart = start;
-      _rangeEnd = end;
-      _rangeSelectionMode = RangeSelectionMode.toggledOn;
-    });
-
-    // `start` or `end` could be null
-    if (start != null && end != null) {
-      _selectedEvents.value = _getEventsForRange(start, end);
-    } else if (start != null) {
-      _selectedEvents.value = _getEventsForDay(start);
-    } else if (end != null) {
-      _selectedEvents.value = _getEventsForDay(end);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,8 +78,14 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
                   onTap: () {
                     goBack();
                   },
-                  child: const Image(
-                      image: AssetImage("assets/icon_back.png"), width: 30)),
+                  child: Container(
+                      width: 30,
+                      height: 30,
+                      key: Key("icon_back"),
+                      color: Colors.transparent,
+                      child: const Image(
+                          image: AssetImage("assets/icon_back.png"),
+                          width: 30)))
             ],
           )),
       TableCalendar(
@@ -118,7 +105,6 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
         eventLoader: _getEventsForDay,
         startingDayOfWeek: StartingDayOfWeek.monday,
         onDaySelected: _onDaySelected,
-        onRangeSelected: _onRangeSelected,
         onFormatChanged: (format) {
           if (_calendarFormat != format) {
             setState(() {

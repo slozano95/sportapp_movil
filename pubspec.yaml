@@ -41,10 +41,15 @@ dependencies:
   syncfusion_flutter_datepicker: ^25.1.39
   table_calendar: ^3.0.9
   flutter_event_calendar: ^1.0.0
+  hrk_flutter_test_batteries: ^0.8.0
 
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_driver:
     sdk: flutter
 
 
@@ -60,8 +65,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   generate: true
+  
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
