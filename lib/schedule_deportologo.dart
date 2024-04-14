@@ -25,8 +25,14 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                   onTap: () {
                     goBack();
                   },
-                  child: const Image(
-                      image: AssetImage("assets/icon_back.png"), width: 30))
+                  child: Container(
+                      width: 30,
+                      height: 30,
+                      key: Key("icon_back"),
+                      color: Colors.transparent,
+                      child: const Image(
+                          image: AssetImage("assets/icon_back.png"),
+                          width: 30)))
             ],
           )),
       Expanded(
@@ -96,7 +102,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                       saveSession();
                     }))
                   ]))),
-      UIComponents.tabBar()
+      UIComponents.tabBar(context, TabItem.home)
     ])));
   }
 
@@ -115,7 +121,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                goBack();
               },
               child: const Text('OK'),
             ),
@@ -123,10 +129,6 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
         );
       },
     );
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => PlanSelector()),
-    // );
   }
 
   void openCalendar() {

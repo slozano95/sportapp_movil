@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
 
 class LoginView extends StatefulWidget {
@@ -23,8 +23,8 @@ class _LoginViewState extends State<LoginView> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const SizedBox(height: 120),
-            const Text(
-              "User",
+            Text(
+              AppLocalizations.of(context)!.user,
               style: TextStyle(fontSize: 20),
             ),
             Container(
@@ -40,8 +40,8 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             const SizedBox(height: 30),
-            const Text(
-              "Password",
+            Text(
+              AppLocalizations.of(context)!.password,
               style: TextStyle(fontSize: 20),
             ),
             Container(
