@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_event_calendar/flutter_event_calendar.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:sportapp_movil/utils.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'utils.dart';
 import 'UI/components.dart';
 
 class CalendarActivities extends StatefulWidget {
