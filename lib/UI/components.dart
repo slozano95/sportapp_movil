@@ -71,7 +71,9 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => PlanSelector()),
                 );
               },
-              child: SizedBox(
+              child: Container(
+                  key: const Key('home_navbar_button'),
+                  color: Colors.transparent,
                   height: 54,
                   child: Center(
                       child: Image(
@@ -88,7 +90,9 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => ProfileView()),
                 );
               },
-              child: SizedBox(
+              child: Container(
+                  key: const Key('profile_navbar_button'),
+                  color: Colors.transparent,
                   height: 54,
                   child: Center(
                       child: Image(
@@ -105,7 +109,9 @@ class UIComponents {
                   MaterialPageRoute(builder: (context) => CalendarActivities()),
                 );
               },
-              child: SizedBox(
+              child: Container(
+                  key: const Key('book_navbar_button'),
+                  color: Colors.transparent,
                   height: 54,
                   child: Center(
                       child: Image(
@@ -117,21 +123,26 @@ class UIComponents {
       Expanded(
           child: GestureDetector(
               onTap: () {
+                print("NAV");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CalendarActivities()),
                 );
               },
-              child: SizedBox(
+              child: Container(
+                key: Key('calendar_navbar_button'),
+                color: Colors.transparent,
                 height: 54,
                 child: Center(
                     child: Image(
-                        image: const AssetImage("assets/icon_calendar.png"),
+                        image: const AssetImage(
+                          "assets/icon_calendar.png",
+                        ),
                         color: currentTab == TabItem.calendar
                             ? AppColors.grey
                             : AppColors.orange,
                         width: 35)),
-              )))
+              ))),
     ]);
   }
 }

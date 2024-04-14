@@ -29,8 +29,14 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                   onTap: () {
                     goBack();
                   },
-                  child: const Image(
-                      image: AssetImage("assets/icon_back.png"), width: 30)),
+                  child: Container(
+                      width: 30,
+                      height: 30,
+                      key: Key("icon_back"),
+                      color: Colors.transparent,
+                      child: const Image(
+                          image: AssetImage("assets/icon_back.png"),
+                          width: 30))),
             ],
           )),
       Expanded(
