@@ -150,23 +150,17 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
-                    title: const Text('Santiago no sabe que poner acá 1'),
+                    title: const Text('Presencial'),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
-                    title: const Text('Santiago no sabe que poner acá 2'),
+                    title: const Text('Virtual'),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                  ),
-                  ListTile(
-                    title: const Text('Santiago no sabe que poner acá 3'),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  )
                 ],
               ));
         });
