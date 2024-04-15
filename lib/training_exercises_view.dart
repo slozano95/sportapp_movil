@@ -16,6 +16,13 @@ class TrainingExercisesView extends StatefulWidget {
 }
 
 class _TrainingExercisesViewState extends State<TrainingExercisesView> {
+  Map<String, int> counts = {
+    "Pierna": 0,
+    "Abdomen": 0,
+    "Lumbar": 0,
+    "Cardio": 0
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,7 +104,12 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                             child: exerciseCell(
                                 "Cardio", "assets/exe_cardio.png", "3x 12"))
                       ],
-                    )
+                    ),
+                    const SizedBox(height: 20),
+                    Center(
+                        child: UIComponents.button("Guardar", () {
+                      saveData();
+                    }))
                   ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
@@ -124,36 +136,26 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        UIComponents.step("-", () {}),
+                        UIComponents.step("-", () {
+                          setState(() {
+                            if (counts[name]! > 0) {
+                              counts[name] = (counts[name]! - 1);
+                            }
+                          });
+                        }),
                         const SizedBox(width: 10),
-                        Text("0", style: AppTypography.body),
+                        Text(counts[name].toString(),
+                            style: AppTypography.body),
                         const SizedBox(width: 10),
-                        UIComponents.step("+", () {}),
+                        UIComponents.step("+", () {
+                          setState(() {
+                            counts[name] = (counts[name]! + 1);
+                          });
+                        }),
                       ])
                 ])
               ]))
             ])));
-  }
-
-  void signOut() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginView()),
-    );
-  }
-
-  void goToScheduleDeportologo() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
-    );
-  }
-
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
-    );
   }
 
   void goBack() {
@@ -164,6 +166,26 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => CurrentSessionView()),
+    );
+  }
+
+  void saveData() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Exito'),
+          content: const Text('Entrenamiento creado'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

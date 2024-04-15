@@ -125,32 +125,4 @@ class _ProfileViewState extends State<ProfileView> {
       MaterialPageRoute(builder: (context) => LoginView()),
     );
   }
-
-  void goToScheduleDeportologo() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
-    );
-  }
-
-  void goToCalendar() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CalendarActivities()),
-    );
-  }
-
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
-    );
-  }
-
-  void goToTrainingPlan() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TrainingPlanView()),
-    );
-  }
 }

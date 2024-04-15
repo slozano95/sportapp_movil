@@ -180,13 +180,6 @@ class _PlanSelectorState extends State<PlanSelector> {
     );
   }
 
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
-    );
-  }
-
   void goToTrainingPlan() {
     Navigator.push(
       context,

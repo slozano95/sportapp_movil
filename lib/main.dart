@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         supportedLocales: AppLocalizations.supportedLocales,
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),
           useMaterial3: true,
         ),
         home: LanguageSelector());

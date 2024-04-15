@@ -82,7 +82,7 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
   Widget activityCell(String name, String image) {
     return GestureDetector(
         onTap: () {
-          goToCurrentSession();
+          goToCurrentSession(name);
         },
         child: Container(
             height: 200,
@@ -114,10 +114,10 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
     );
   }
 
-  void goToCurrentSession() {
+  void goToCurrentSession(String title) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
+      MaterialPageRoute(builder: (context) => CurrentSessionView(title: title)),
     );
   }
 
