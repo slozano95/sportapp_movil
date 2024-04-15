@@ -613,11 +613,8 @@ DA:155,2
 DA:158,1
 DA:160,0
 DA:161,0
-DA:164,1
-DA:166,0
-DA:167,0
-LF:70
-LH:66
+LF:67
+LH:65
 end_of_record
 SF:lib/training_plan_view.dart
 DA:13,1
