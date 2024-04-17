@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/utils.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -75,7 +76,7 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
             children: [
               GestureDetector(
                   onTap: () {
-                    goBack();
+                    signOut();
                   },
                   child: Container(
                       width: 30,
@@ -83,7 +84,7 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
                       key: Key("icon_back"),
                       color: Colors.transparent,
                       child: const Image(
-                          image: AssetImage("assets/icon_back.png"),
+                          image: AssetImage("assets/icon_logout.png"),
                           width: 30)))
             ],
           )),
@@ -158,7 +159,10 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
     ])));
   }
 
-  void goBack() {
-    Navigator.of(context).pop();
+  void signOut() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginView()),
+    );
   }
 }

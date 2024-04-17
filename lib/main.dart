@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/language_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -20,6 +21,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale _locale = Locale("es");
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    DataManager().initData();
+    super.initState();
+  }
 
   void setLocale(Locale value) {
     setState(() {

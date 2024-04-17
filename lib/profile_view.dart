@@ -36,9 +36,10 @@ class _ProfileViewState extends State<ProfileView> {
           child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                     Text("Tablero Control",
                         style: AppTypography.heading,
                         textAlign: TextAlign.left),
@@ -114,7 +115,7 @@ class _ProfileViewState extends State<ProfileView> {
                               style: AppTypography.medium,
                               textAlign: TextAlign.center),
                         ))
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.profile)
     ])));
   }
