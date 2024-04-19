@@ -11,6 +11,8 @@
   "dep_titulo": "Cita Deportólogo",
   "dep_agendar": "Agendar Sesión",
   "dep_opcion": "Selecciona la opción",
+  "dep_prensent": "Presencial",
+  "dep_virtual": "Virtual",
   "dep_fecha": "Seleccione la fecha",
   "dep_guardar": "Guardar",
   "dep_exitoso": "Exitoso",
@@ -18,8 +20,10 @@
   "entr_titulo": "Plan de Entrenamiento",
   "entr_ciclismo": "Ciclismo",
   "entr_atletismo": "Atletismo",
-  "entr_cals_activas": "Calorías Activas",
+  "entr_cals_activas": "Calorías \nActivas",
   "entr_cals": "Calorías",
+  "entr_ftp": "FTP",
+  "entr_max":"VO2 Max",
   "entr_start_session":"Iniciar sesión",
   "entr_end_session":"Finalizar sesión",
   "entr_plan_nutricional":"Plan Nutricional",
@@ -41,11 +45,11 @@
   "perfil_avance": "Avance",
   "perfil_peso": "Pesos",
   "perfil_message": "Increbile, sigue así!",
-  
   "plan_premium": "Plan Premium",
   "plan_basico": "Plan Basico",
   "plan_medio": "Plan Medio",
   "idioma": "Selecciona tu Idioma",
-   "dep_exitoso_Aceptar": "Aceptar"
-   
+  "dep_exitoso_Aceptar": "Aceptar",
+  "sign_in": "Ingresar"
+
 }

@@ -4,7 +4,7 @@ import 'package:sportapp_movil/current_session_view.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
 
 // ignore: must_be_immutable
@@ -46,10 +46,9 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    Text("Agregar entrenamiento", style: AppTypography.heading),
+                    Text(AppLocalizations.of(context)!.entr_add_title, style: AppTypography.heading),
                     const SizedBox(height: 40),
-                    const Text(
-                      "Nombre del entrenamiento",
+                          Text(AppLocalizations.of(context)!.entr_add_nombre,
                       style: TextStyle(fontSize: 20),
                     ),
                     Container(
@@ -65,13 +64,13 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       ),
                     ),
                     const SizedBox(height: 40),
-                    Text("Ejercicios", style: AppTypography.heading),
+                    Text(AppLocalizations.of(context)!.entr_add_ejercicios, style: AppTypography.heading),
                     const SizedBox(height: 20),
                     Row(
                       children: [
                         Expanded(
                             child: exerciseCell(
-                                "Pierna", "assets/exe_pierna.png", "3x 12"))
+                                AppLocalizations.of(context)!.entr_add_pierna, "assets/exe_pierna.png", "3x 12"))
                       ],
                     ),
                     const SizedBox(height: 55),
@@ -79,7 +78,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       children: [
                         Expanded(
                             child: exerciseCell(
-                                "Abdomen", "assets/exe_abdomen.png", "3x 12"))
+                                AppLocalizations.of(context)!.entr_add_abdomen, "assets/exe_abdomen.png", "3x 12"))
                       ],
                     ),
                     const SizedBox(height: 55),
@@ -87,7 +86,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       children: [
                         Expanded(
                             child: exerciseCell(
-                                "Lumbar", "assets/exe_lumbar.png", "3x 12"))
+                                AppLocalizations.of(context)!.entr_add_lumbar, "assets/exe_lumbar.png", "3x 12"))
                       ],
                     ),
                     const SizedBox(height: 55),
@@ -95,7 +94,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       children: [
                         Expanded(
                             child: exerciseCell(
-                                "Cardio", "assets/exe_cardio.png", "3x 12"))
+                                AppLocalizations.of(context)!.entr_add_cardio, "assets/exe_cardio.png", "3x 12"))
                       ],
                     )
                   ])))),
@@ -119,7 +118,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                 Text(description, style: AppTypography.body),
                 const Spacer(),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Repeticiones"),
+                Text(AppLocalizations.of(context)!.entr_add_reps),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

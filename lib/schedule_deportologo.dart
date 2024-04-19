@@ -99,7 +99,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                     ),
                     const SizedBox(height: 50),
                     Center(
-                        child: UIComponents.button('Guardar', () {
+                        child: UIComponents.button(AppLocalizations.of(context)!.dep_guardar, () {
                       saveSession();
                     }))
                   ]))),
@@ -146,18 +146,18 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: const Text('Selecciona la opción'),
+              title: Text(AppLocalizations.of(context)!.dep_opcion,),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
-                    title: const Text('Presencial'),
+                    title: Text(AppLocalizations.of(context)!.dep_prensent),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
-                    title: const Text('Virtual'),
+                    title: Text(AppLocalizations.of(context)!.dep_virtual),
                     onTap: () {
                       Navigator.of(context).pop();
                     },

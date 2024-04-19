@@ -80,8 +80,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                           style: const TextStyle(fontSize: 32),
                         ),
                         const SizedBox(width: 10),
-                        const Text(
-                          "Calorias\nActivas",
+                        Text(
+                          AppLocalizations.of(context)!.entr_cals_activas,
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 15),
                         ),
@@ -92,8 +92,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                           style: const TextStyle(fontSize: 32),
                         ),
                         const SizedBox(width: 10),
-                        const Text(
-                          "Calorias",
+                        Text(
+                          AppLocalizations.of(context)!.entr_cals,
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 15),
                         )
@@ -125,8 +125,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                              const Text(
-                                "FTP",
+                               Text(
+                                AppLocalizations.of(context)!.entr_ftp,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
                               ),
@@ -137,8 +137,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                              const Text(
-                                "VO2 Max",
+                               Text(
+                                AppLocalizations.of(context)!.entr_max,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
                               )
@@ -149,20 +149,21 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                         ? Center(
                             child: UIComponents.button(
                                 _isSessionActive
-                                    ? "Finalizar sesión"
-                                    : 'Iniciar sesión', () {
+                                    ? AppLocalizations.of(context)!.entr_end_session
+                                    : AppLocalizations.of(context)!.entr_start_session, () {
                             toggleSession();
                           }))
                         : Column(children: [
                             Center(
                                 child:
-                                    UIComponents.button('Plan Nutricional', () {
+                                    UIComponents.button(AppLocalizations.of(context)!.entr_plan_nutricional, () {
                               //TODO
                             })),
                             const SizedBox(height: 34),
                             Center(
                                 child: UIComponents.button(
-                                    'Plan de Recuperación', () {
+                                    AppLocalizations.of(context)!.entr_plan_recuperacion,
+                                     () {
                               //TODO
                             }))
                           ])
@@ -181,8 +182,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Exitoso'),
-          content: const Text('Sesion Agendada'),
+          title:  Text(AppLocalizations.of(context)!.dep_exitoso),
+          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
               onPressed: () {

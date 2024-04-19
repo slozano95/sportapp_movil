@@ -5,6 +5,7 @@ import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/training_exercises_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'UI/components.dart';
 
@@ -57,13 +58,13 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Plan de Entrenamiento", style: AppTypography.heading),
+                    Text(AppLocalizations.of(context)!.entr_titulo, style: AppTypography.heading),
                     const SizedBox(height: 40),
                     Row(
                       children: [
                         Expanded(
                             child: activityCell(
-                                "Ciclismo", "assets/plan_ciclismo.png"))
+                                AppLocalizations.of(context)!.entr_ciclismo, "assets/plan_ciclismo.png"))
                       ],
                     ),
                     const SizedBox(height: 55),
@@ -71,7 +72,7 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                       children: [
                         Expanded(
                             child: activityCell(
-                                "Atletismo", "assets/plan_atletismo.png"))
+                                AppLocalizations.of(context)!.entr_atletismo, "assets/plan_atletismo.png"))
                       ],
                     )
                   ]))),

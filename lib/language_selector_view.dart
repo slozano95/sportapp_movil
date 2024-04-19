@@ -20,11 +20,9 @@ class _LanguageSelectorState extends State<LanguageSelector> {
           padding: const EdgeInsets.all(38),
           child: Column(children: [
             const SizedBox(height: 120),
-            const Text(
-                        'Select a language',
-                        
-                        style: TextStyle(fontSize: 20),
-            ),
+             Text(AppLocalizations.of(context)!.idioma,
+                  style: TextStyle(fontSize: 20),
+                  ),
             const SizedBox(height: 20),
             UIComponents.button("Español", () {
               onSelectedLanguage(context, "es");

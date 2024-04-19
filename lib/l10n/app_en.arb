@@ -12,16 +12,20 @@
   "dep_agendar": "Schedule Session",
   "dep_opcion": "Select option",
   "dep_fecha": "Select date",
+  "dep_prensent": "On-Site",
+  "dep_virtual": "Virtual",
   "dep_guardar": "Keep",
   "dep_exitoso": "Successful",
   "dep_exitoso_desc": "Scheduled Session",
   "entr_titulo": "Training plan",
   "entr_ciclismo": "Cycling",
   "entr_atletismo": "Athletics",
-  "entr_cals_activas": "Active Calories",
+  "entr_cals_activas": "Active \nCalories",
   "entr_cals": "Calories",
-  "entr_start_session": "Log in",
-  "entr_end_session": "End session",
+  "entr_ftp": "FTP",
+  "entr_max": "VO2 Max",
+  "entr_start_session": "Start",
+  "entr_end_session": "End",
   "entr_plan_nutricional": "Nutritional Plan",
   "entr_plan_recuperacion": "Recovery Plan",
   "entr_add_title": "Add training",
@@ -41,13 +45,11 @@
   "perfil_avance": "Advance",
   "perfil_peso": "Pesos",
   "perfil_message": "Increbile keep it up!",
-
-   
-  "plan_premium": "Plan Premium",
-  "plan_basico": "Plan Basico",
-  "plan_medio": "Plan Medio",
-  "idioma": "Selecciona tu Idioma",
-  "dep_exitoso_Aceptar": "Aceptar"
-
-  
+  "plan_premium": "Premium Plan",
+  "plan_basico": "Basic Plan",
+  "plan_medio": "Medium Plan",
+  "idioma": "Select your Language",
+  "dep_exitoso_Aceptar": "Accept",
+  "sign_in": "Sing In"
+ 
 }
