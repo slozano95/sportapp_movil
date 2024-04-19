@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
 
 class CurrentSessionView extends StatefulWidget {
@@ -57,7 +57,8 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Ciclismo",
+                    Text( 
+                        AppLocalizations.of(context)!.entr_ciclismo,
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),

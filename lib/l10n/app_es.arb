@@ -40,5 +40,12 @@
   "perfil_eventosasis": "Eventos asistidos",
   "perfil_avance": "Avance",
   "perfil_peso": "Pesos",
-  "perfil_message": "Increbile, sigue así!"
+  "perfil_message": "Increbile, sigue así!",
+  
+  "plan_premium": "Plan Premium",
+  "plan_basico": "Plan Basico",
+  "plan_medio": "Plan Medio",
+  "idioma": "Selecciona tu Idioma",
+   "dep_exitoso_Aceptar": "Aceptar"
+   
 }

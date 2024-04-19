@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'UI/components.dart';
 
@@ -41,12 +42,11 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cita Deportólogo",
+                    Text(AppLocalizations.of(context)!.dep_titulo,
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),
-                    const Text(
-                      "Agendar sesión",
+                    Text(AppLocalizations.of(context)!.dep_agendar,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -61,9 +61,10 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.grey),
-                          child: const Row(children: [
+                          child: 
+                          Row(children:[
                             Text(
-                              "Selecciona la opción",
+                              AppLocalizations.of(context)!.dep_opcion,
                               style: TextStyle(fontSize: 16),
                             ),
                             Spacer(),
@@ -71,8 +72,8 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           ])),
                     ),
                     const SizedBox(height: 30),
-                    const Text(
-                      "Seleccione la fecha",
+                     Text(
+                      AppLocalizations.of(context)!.dep_fecha,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -116,14 +117,14 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Exitoso'),
-          content: const Text('Sesion Agendada'),
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
+          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
               onPressed: () {
                 goBack();
               },
-              child: const Text('OK'),
+              child:Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
             ),
           ],
         );
