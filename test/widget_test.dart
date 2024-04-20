@@ -44,7 +44,7 @@ void main() {
     expect(find.textContaining('Cita'), findsOneWidget);
     await tester.tap(find.textContaining("Selecciona la opción"));
     await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Santiago no sabe que poner acá 1"));
+    await tester.tap(find.textContaining("Presencial"));
     await tester.pumpAndSettle();
     await tester.tap(find.byIcon(Icons.calendar_month));
     await tester.pumpAndSettle();

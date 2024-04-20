@@ -55,10 +55,11 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
       Expanded(
           child: Container(
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(AppLocalizations.of(context)!.entr_titulo, style: AppTypography.heading),
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+             Text(AppLocalizations.of(context)!.entr_titulo, style: AppTypography.heading),
                     const SizedBox(height: 40),
                     Row(
                       children: [
@@ -75,7 +76,7 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                                 AppLocalizations.of(context)!.entr_atletismo, "assets/plan_atletismo.png"))
                       ],
                     )
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
   }
@@ -83,14 +84,26 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
   Widget activityCell(String name, String image) {
     return GestureDetector(
         onTap: () {
-          goToCurrentSession();
+          goToCurrentSession(name);
         },
         child: Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: const Offset(0, 10),
+                  )
+                ]),
             height: 200,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(name, style: AppTypography.body),
-              SizedBox(height: 25),
+              Text(name, style: AppTypography.heading),
+              const SizedBox(height: 4),
               Expanded(
                   child: Container(
                       decoration: BoxDecoration(
@@ -115,10 +128,10 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
     );
   }
 
-  void goToCurrentSession() {
+  void goToCurrentSession(String title) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
+      MaterialPageRoute(builder: (context) => CurrentSessionView(title: title)),
     );
   }
 

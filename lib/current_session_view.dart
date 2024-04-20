@@ -8,8 +8,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
 
 class CurrentSessionView extends StatefulWidget {
-  const CurrentSessionView({super.key});
-
+  CurrentSessionView({super.key, this.title = ""});
+  String title = "";
   @override
   _CurrentSessionViewState createState() => _CurrentSessionViewState();
 }
@@ -57,8 +57,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text( 
-                        AppLocalizations.of(context)!.entr_ciclismo,
+                    Text(widget.title,
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),

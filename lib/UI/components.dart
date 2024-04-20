@@ -79,8 +79,8 @@ class UIComponents {
                       child: Image(
                           image: const AssetImage("assets/icon_home.png"),
                           color: currentTab == TabItem.home
-                              ? AppColors.grey
-                              : AppColors.orange,
+                              ? AppColors.darkOrange
+                              : AppColors.orange.withAlpha(120),
                           width: 35))))),
       Expanded(
           child: GestureDetector(
@@ -98,8 +98,8 @@ class UIComponents {
                       child: Image(
                           image: const AssetImage("assets/icon_profile.png"),
                           color: currentTab == TabItem.profile
-                              ? AppColors.grey
-                              : AppColors.orange,
+                              ? AppColors.darkOrange
+                              : AppColors.orange.withAlpha(120),
                           width: 35))))),
       Expanded(
           child: GestureDetector(
@@ -117,8 +117,8 @@ class UIComponents {
                       child: Image(
                           image: const AssetImage("assets/icon_book.png"),
                           color: currentTab == TabItem.book
-                              ? AppColors.grey
-                              : AppColors.orange,
+                              ? AppColors.darkOrange
+                              : AppColors.orange.withAlpha(120),
                           width: 35))))),
       Expanded(
           child: GestureDetector(
@@ -139,8 +139,8 @@ class UIComponents {
                           "assets/icon_calendar.png",
                         ),
                         color: currentTab == TabItem.calendar
-                            ? AppColors.grey
-                            : AppColors.orange,
+                            ? AppColors.darkOrange
+                            : AppColors.orange.withAlpha(120),
                         width: 35)),
               ))),
     ]);
