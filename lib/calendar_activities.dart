@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/utils.dart';
@@ -16,17 +17,17 @@ class CalendarActivities extends StatefulWidget {
 class _CalendarActivitiesState extends State<CalendarActivities> {
   late final ValueNotifier<List<Event>> _selectedEvents;
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
-      .toggledOff; // Can be toggled on/off by longpressing a date
+  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   DateTime? _rangeStart;
   DateTime? _rangeEnd;
   DateTime today = DateTime.now();
+  String _title = "";
+
   @override
   void initState() {
     super.initState();
-
     _selectedDay = _focusedDay;
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
   }
@@ -38,14 +39,20 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
   }
 
   List<Event> _getEventsForDay(DateTime day) {
-    // Implementation example
-    return kEvents[day] ?? [];
+    List<Event> events = [];
+    for (var element in DataManager().allEntrenamientos) {
+      var date = DateTime.parse(element.fechaEntrenamiento ?? "");
+      if (date.year == day.year &&
+          date.month == day.month &&
+          date.day == day.day) {
+        events.add(Event(("Entrenamiento: ${element.nombre}")));
+      }
+    }
+    return events;
   }
 
   List<Event> _getEventsForRange(DateTime start, DateTime end) {
-    // Implementation example
     final days = daysInRange(start, end);
-
     return [
       for (final d in days) ..._getEventsForDay(d),
     ];
@@ -56,7 +63,7 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
       setState(() {
         _selectedDay = selectedDay;
         _focusedDay = focusedDay;
-        _rangeStart = null; // Important to clean those
+        _rangeStart = null;
         _rangeEnd = null;
         _rangeSelectionMode = RangeSelectionMode.toggledOff;
       });
@@ -85,14 +92,28 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
                       color: Colors.transparent,
                       child: const Image(
                           image: AssetImage("assets/icon_logout.png"),
-                          width: 30)))
+                          width: 30))),
+              Spacer(),
+              Text(_title),
+              Spacer(),
+              GestureDetector(
+                  onTap: () {
+                    reloadCalendarData();
+                  },
+                  child: Container(
+                      width: 30,
+                      height: 30,
+                      key: Key("icon_back"),
+                      color: Colors.transparent,
+                      child:
+                          Icon(Icons.replay_outlined, color: AppColors.orange)))
             ],
           )),
       TableCalendar(
         locale: "es_ES",
         rowHeight: 43,
         headerStyle:
-            HeaderStyle(formatButtonVisible: false, titleCentered: true),
+            const HeaderStyle(formatButtonVisible: false, titleCentered: true),
         availableGestures: AvailableGestures.all,
         selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
         focusedDay: _focusedDay,
@@ -164,5 +185,16 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
       context,
       MaterialPageRoute(builder: (context) => LoginView()),
     );
+  }
+
+  void reloadCalendarData() {
+    setState(() {
+      _title = "Cargando datos...";
+    });
+    DataManager().getCalendarData().then((value) {
+      setState(() {
+        _title = "";
+      });
+    });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/constants.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
@@ -77,6 +78,7 @@ class _LoginViewState extends State<LoginView> {
         default:
           id_user = "87adc016-82eb-4c92-b722-0e80ebfdcfe5";
       }
+      DataManager().initData();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PlanSelector()),
