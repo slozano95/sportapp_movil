@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'UI/components.dart';
 
@@ -12,6 +13,9 @@ class ScheduleDeportologo extends StatefulWidget {
 }
 
 class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
+  String optionsTitle = "Selecciona la opción";
+  String date = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,12 +45,11 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cita Deportólogo",
+                    Text(AppLocalizations.of(context)!.dep_titulo,
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),
-                    const Text(
-                      "Agendar sesión",
+                    Text(AppLocalizations.of(context)!.dep_agendar,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -61,18 +64,18 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.grey),
-                          child: const Row(children: [
+                          child: Row(children: [
                             Text(
-                              "Selecciona la opción",
-                              style: TextStyle(fontSize: 16),
+                              AppLocalizations.of(context)!.dep_opcion,
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Spacer(),
                             Icon(Icons.arrow_drop_down_circle_outlined)
                           ])),
                     ),
                     const SizedBox(height: 30),
-                    const Text(
-                      "Seleccione la fecha",
+                     Text(
+                      AppLocalizations.of(context)!.dep_fecha,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -87,9 +90,9 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.grey),
-                          child: const Row(children: [
+                          child: Row(children: [
                             Text(
-                              "",
+                              date,
                               style: TextStyle(fontSize: 16),
                             ),
                             Spacer(),
@@ -98,7 +101,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                     ),
                     const SizedBox(height: 50),
                     Center(
-                        child: UIComponents.button('Guardar', () {
+                        child: UIComponents.button(AppLocalizations.of(context)!.dep_guardar, () {
                       saveSession();
                     }))
                   ]))),
@@ -116,14 +119,14 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Exitoso'),
-          content: const Text('Sesion Agendada'),
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
+          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
               onPressed: () {
                 goBack();
               },
-              child: const Text('OK'),
+              child:Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
             ),
           ],
         );
@@ -137,7 +140,11 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 30)),
-    );
+    ).then((value) {
+      setState(() {
+        date = value.toString().replaceAll(" 00:00:00.000", "");
+      });
+    });
   }
 
   void openDropdown() {
@@ -145,28 +152,28 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: const Text('Selecciona la opción'),
+              title: Text(AppLocalizations.of(context)!.dep_opcion,),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
-                    title: const Text('Santiago no sabe que poner acá 1'),
+                    title: Text(AppLocalizations.of(context)!.dep_prensent),
                     onTap: () {
+                      setState(() {
+                        optionsTitle = "Presencial";
+                      });
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
-                    title: const Text('Santiago no sabe que poner acá 2'),
+                    title: Text(AppLocalizations.of(context)!.dep_virtual),
                     onTap: () {
+                      setState(() {
+                        optionsTitle = "Virtual";
+                      });
                       Navigator.of(context).pop();
                     },
-                  ),
-                  ListTile(
-                    title: const Text('Santiago no sabe que poner acá 3'),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  )
                 ],
               ));
         });

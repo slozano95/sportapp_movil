@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'UI/components.dart';
 import 'main.dart';
 
@@ -21,10 +20,9 @@ class _LanguageSelectorState extends State<LanguageSelector> {
           padding: const EdgeInsets.all(38),
           child: Column(children: [
             const SizedBox(height: 120),
-            const Text(
-              'Por favor selecciona tu idioma / Please select your language',
-              style: TextStyle(fontSize: 20),
-            ),
+             Text(AppLocalizations.of(context)!.idioma,
+                  style: TextStyle(fontSize: 20),
+                  ),
             const SizedBox(height: 20),
             UIComponents.button("Español", () {
               onSelectedLanguage(context, "es");

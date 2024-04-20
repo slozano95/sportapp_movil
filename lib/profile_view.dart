@@ -5,6 +5,7 @@ import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/calendar_activities.dart';
 import 'package:sportapp_movil/training_plan_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
 
 class ProfileView extends StatefulWidget {
@@ -36,14 +37,15 @@ class _ProfileViewState extends State<ProfileView> {
           child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Tablero Control",
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                    Text(AppLocalizations.of(context)!.perfil_title,
                         style: AppTypography.heading,
                         textAlign: TextAlign.left),
                     const SizedBox(height: 60),
-                    Text("Proceso", style: AppTypography.medium),
+                    Text( AppLocalizations.of(context)!.perfil_proceso, style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
@@ -57,7 +59,7 @@ class _ProfileViewState extends State<ProfileView> {
                       ],
                     ),
                     const SizedBox(height: 60),
-                    Text("En el ultimo mes", style: AppTypography.medium),
+                    Text( AppLocalizations.of(context)!.perfil_ultimomes, style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
@@ -73,7 +75,7 @@ class _ProfileViewState extends State<ProfileView> {
                       ],
                     ),
                     const SizedBox(height: 60),
-                    Text("Avance", style: AppTypography.medium),
+                    Text( AppLocalizations.of(context)!.perfil_avance, style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
@@ -110,11 +112,11 @@ class _ProfileViewState extends State<ProfileView> {
                             borderRadius: BorderRadius.circular(12),
                             color: AppColors.grey),
                         child: Center(
-                          child: Text("Increible sigue asi!",
+                          child: Text(AppLocalizations.of(context)!.perfil_message,
                               style: AppTypography.medium,
                               textAlign: TextAlign.center),
                         ))
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.profile)
     ])));
   }
@@ -123,34 +125,6 @@ class _ProfileViewState extends State<ProfileView> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),
-    );
-  }
-
-  void goToScheduleDeportologo() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
-    );
-  }
-
-  void goToCalendar() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CalendarActivities()),
-    );
-  }
-
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
-    );
-  }
-
-  void goToTrainingPlan() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TrainingPlanView()),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/constants.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
@@ -12,6 +14,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  var controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +35,10 @@ class _LoginViewState extends State<LoginView> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.grey),
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                key: const Key("user"),
+                controller: controller,
+                decoration: const InputDecoration(
                     hintStyle: TextStyle(fontSize: 17),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
@@ -42,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
             const SizedBox(height: 30),
             Text(
               AppLocalizations.of(context)!.password,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             Container(
               height: 40,
@@ -59,7 +64,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             const SizedBox(height: 50),
             Center(
-                child: UIComponents.button('Sign In', () {
+                child: UIComponents.button(
+                    AppLocalizations.of(context)!.sign_in, () {
               onSignIn();
             }))
           ]))
@@ -67,9 +73,18 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void onSignIn() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => PlanSelector()),
-    );
+    if (controller.text != "") {
+      switch (controller.text) {
+        case "1":
+          id_user = "07adc016-82eb-4c92-b722-0e80ebfdcfe5";
+        default:
+          id_user = "87adc016-82eb-4c92-b722-0e80ebfdcfe5";
+      }
+      DataManager().initData();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PlanSelector()),
+      );
+    }
   }
 }

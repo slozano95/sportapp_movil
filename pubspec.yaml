@@ -43,6 +43,8 @@ dependencies:
   table_calendar: ^3.0.9
   flutter_event_calendar: ^1.0.0
   hrk_flutter_test_batteries: ^0.8.0
+  http: ^1.2.0
+  nock: ^1.2.3
 
 dev_dependencies:
   flutter_test:
