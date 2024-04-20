@@ -80,7 +80,6 @@ class _LoginViewState extends State<LoginView> {
         default:
           id_user = "87adc016-82eb-4c92-b722-0e80ebfdcfe5";
       }
-
       DataManager().initData();
       Navigator.push(
         context,
