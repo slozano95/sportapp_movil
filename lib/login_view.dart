@@ -36,8 +36,9 @@ class _LoginViewState extends State<LoginView> {
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.grey),
               child: TextField(
+                key: const Key("user"),
                 controller: controller,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintStyle: TextStyle(fontSize: 17),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
@@ -46,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
             const SizedBox(height: 30),
             Text(
               AppLocalizations.of(context)!.password,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
             Container(
               height: 40,
@@ -63,7 +64,8 @@ class _LoginViewState extends State<LoginView> {
             ),
             const SizedBox(height: 50),
             Center(
-                child: UIComponents.button(AppLocalizations.of(context)!.sign_in, () {
+                child: UIComponents.button(
+                    AppLocalizations.of(context)!.sign_in, () {
               onSignIn();
             }))
           ]))

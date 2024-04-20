@@ -29,9 +29,9 @@ class DataManager {
     getExercises();
   }
 
-  void getExercises() {
+  Future<void> getExercises() async {
     var service = ExercisesService();
-    service.getAll().then((value) {
+    await service.getAll().then((value) {
       allExercises = value;
     });
   }
