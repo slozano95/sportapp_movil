@@ -48,6 +48,14 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
         events.add(Event(("Entrenamiento: ${element.nombre}")));
       }
     }
+    for (var element in DataManager().allEventos) {
+      var date = DateTime.parse(element.evento?.fechaEvento ?? "");
+      if (date.year == day.year &&
+          date.month == day.month &&
+          date.day == day.day) {
+        events.add(Event(("Evento: ${element.evento?.nombre}")));
+      }
+    }
     return events;
   }
 
