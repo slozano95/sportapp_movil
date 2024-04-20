@@ -73,18 +73,16 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void onSignIn() {
-    if (controller.text != "") {
-      switch (controller.text) {
-        case "1":
-          id_user = "07adc016-82eb-4c92-b722-0e80ebfdcfe5";
-        default:
-          id_user = "87adc016-82eb-4c92-b722-0e80ebfdcfe5";
-      }
-      DataManager().initData();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PlanSelector()),
-      );
+    switch (controller.text) {
+      case "1":
+        id_user = "07adc016-82eb-4c92-b722-0e80ebfdcfe5";
+      default:
+        id_user = "87adc016-82eb-4c92-b722-0e80ebfdcfe5";
     }
+    DataManager().initData();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PlanSelector()),
+    );
   }
 }
