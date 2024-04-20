@@ -1,12 +1,15 @@
 import 'package:sportapp_movil/services/entrenamiento_service.dart';
+import 'package:sportapp_movil/services/eventos_service.dart';
 import 'package:sportapp_movil/services/exercises_service.dart';
 import 'package:sportapp_movil/services/models/entrenamiento_api_model.dart';
+import 'package:sportapp_movil/services/models/eventos_api_model.dart';
 import 'package:sportapp_movil/services/models/exercises_api_model.dart';
 
 class DataManager {
   static final DataManager _singleton = DataManager._internal();
   List<ExercisesApiModel> allExercises = [];
   List<EntrenamientosModel> allEntrenamientos = [];
+  List<EventosApiModel> allEventos = [];
 
   factory DataManager() {
     return _singleton;
@@ -26,7 +29,9 @@ class DataManager {
 
   void initData() {
     getEntrenamientos();
+
     getExercises();
+    getEventos();
   }
 
   Future<void> getExercises() async {
@@ -43,7 +48,15 @@ class DataManager {
     });
   }
 
+  Future<void> getEventos() async {
+    var service = EventosService();
+    await service.getAll().then((value) {
+      allEventos = value;
+    });
+  }
+
   Future<void> getCalendarData() async {
     await getEntrenamientos();
+    await getEventos();
   }
 }
