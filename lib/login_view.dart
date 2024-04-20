@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
             ),
             const SizedBox(height: 50),
             Center(
-                child: UIComponents.button('Sign In', () {
+                child: UIComponents.button(AppLocalizations.of(context)!.sign_in, () {
               onSignIn();
             }))
           ]))

@@ -5,8 +5,8 @@ import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sportapp_movil/services/training_exercises_service.dart';
-
 import 'UI/components.dart';
 
 // ignore: must_be_immutable
@@ -59,11 +59,10 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    Text("Agregar entrenamiento", style: AppTypography.heading),
-                    const SizedBox(height: 20),
-                    const Text(
-                      "Nombre del entrenamiento",
-                      style: TextStyle(fontSize: 16),
+                    Text(AppLocalizations.of(context)!.entr_add_title, style: AppTypography.heading),
+                    const SizedBox(height: 40),
+                          Text(AppLocalizations.of(context)!.entr_add_nombre,
+                      style: TextStyle(fontSize: 20),
                     ),
                     Container(
                       height: 40,
@@ -155,7 +154,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                 Text(description, style: AppTypography.body),
                 const Spacer(),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Repeticiones"),
+                Text(AppLocalizations.of(context)!.entr_add_reps),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

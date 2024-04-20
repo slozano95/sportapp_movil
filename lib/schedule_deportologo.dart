@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'UI/components.dart';
 
@@ -44,12 +45,11 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cita Deportólogo",
+                    Text(AppLocalizations.of(context)!.dep_titulo,
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),
-                    const Text(
-                      "Agendar sesión",
+                    Text(AppLocalizations.of(context)!.dep_agendar,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -66,7 +66,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                               color: AppColors.grey),
                           child: Row(children: [
                             Text(
-                              optionsTitle,
+                              AppLocalizations.of(context)!.dep_opcion,
                               style: const TextStyle(fontSize: 16),
                             ),
                             Spacer(),
@@ -74,8 +74,8 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           ])),
                     ),
                     const SizedBox(height: 30),
-                    const Text(
-                      "Seleccione la fecha",
+                     Text(
+                      AppLocalizations.of(context)!.dep_fecha,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -101,7 +101,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                     ),
                     const SizedBox(height: 50),
                     Center(
-                        child: UIComponents.button('Guardar', () {
+                        child: UIComponents.button(AppLocalizations.of(context)!.dep_guardar, () {
                       saveSession();
                     }))
                   ]))),
@@ -119,14 +119,14 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Exitoso'),
-          content: const Text('Sesion Agendada'),
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
+          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
               onPressed: () {
                 goBack();
               },
-              child: const Text('OK'),
+              child:Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
             ),
           ],
         );
@@ -152,12 +152,12 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: const Text('Selecciona la opción'),
+              title: Text(AppLocalizations.of(context)!.dep_opcion,),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
-                    title: const Text('Presencial'),
+                    title: Text(AppLocalizations.of(context)!.dep_prensent),
                     onTap: () {
                       setState(() {
                         optionsTitle = "Presencial";
@@ -166,7 +166,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                     },
                   ),
                   ListTile(
-                    title: const Text('Virtual'),
+                    title: Text(AppLocalizations.of(context)!.dep_virtual),
                     onTap: () {
                       setState(() {
                         optionsTitle = "Virtual";
