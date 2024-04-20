@@ -36,9 +36,10 @@ class _ProfileViewState extends State<ProfileView> {
           child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                     Text("Tablero Control",
                         style: AppTypography.heading,
                         textAlign: TextAlign.left),
@@ -114,7 +115,7 @@ class _ProfileViewState extends State<ProfileView> {
                               style: AppTypography.medium,
                               textAlign: TextAlign.center),
                         ))
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.profile)
     ])));
   }
@@ -123,34 +124,6 @@ class _ProfileViewState extends State<ProfileView> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),
-    );
-  }
-
-  void goToScheduleDeportologo() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
-    );
-  }
-
-  void goToCalendar() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CalendarActivities()),
-    );
-  }
-
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
-    );
-  }
-
-  void goToTrainingPlan() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TrainingPlanView()),
     );
   }
 }

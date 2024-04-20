@@ -24,11 +24,11 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
   hashCode: getHashCode,
 )..addAll(_kEventSource);
 
-final _kEventSource = Map.fromIterable(List.generate(50, (index) => index),
-    key: (item) => DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5),
-    value: (item) => List.generate(
-        item % 2 + 1, (index) => Event('Sesion $item | ${index + 1}')))
-  ..addAll({
+final _kEventSource = {
+  for (var item in List.generate(50, (index) => index))
+    DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
+        item % 2 + 1, (index) => Event('Sesion $item | ${index + 1}'))
+}..addAll({
     kToday: [
       Event('Sesion Deportologo  2:30 pm'),
       Event('Rumba  5:00 pm'),

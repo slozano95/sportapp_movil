@@ -101,29 +101,30 @@ class _PlanSelectorState extends State<PlanSelector> {
           )),
       Expanded(
           child: Container(
-              padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              padding: const EdgeInsets.all(24),
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                     Text(widget.selectedOption.name,
                         style: AppTypography.heading),
                     const SizedBox(height: 40),
                     Row(
                       children: [
                         Expanded(child: planCell(PlanFeatures.scheduleSession)),
-                        const SizedBox(width: 34),
+                        const SizedBox(width: 12),
                         Expanded(child: planCell(PlanFeatures.heartRate)),
                       ],
                     ),
-                    const SizedBox(height: 55),
+                    const SizedBox(height: 12),
                     Row(
                       children: [
                         Expanded(child: planCell(PlanFeatures.trainingPlan)),
-                        const SizedBox(width: 34),
+                        const SizedBox(width: 12),
                         Expanded(child: planCell(PlanFeatures.events)),
                       ],
                     )
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
   }
@@ -143,11 +144,23 @@ class _PlanSelectorState extends State<PlanSelector> {
           }
         },
         child: Container(
-            height: 250,
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: const Offset(0, 10),
+                  )
+                ]),
+            height: 220,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(planFeature.name, style: AppTypography.body),
-              SizedBox(height: 25),
+              SizedBox(height: 4),
               Expanded(
                   child: Container(
                       decoration: BoxDecoration(
@@ -177,13 +190,6 @@ class _PlanSelectorState extends State<PlanSelector> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ScheduleDeportologo()),
-    );
-  }
-
-  void goToCurrentSession() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CurrentSessionView()),
     );
   }
 

@@ -12,6 +12,9 @@ class ScheduleDeportologo extends StatefulWidget {
 }
 
 class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
+  String optionsTitle = "Selecciona la opción";
+  String date = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,10 +64,10 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.grey),
-                          child: const Row(children: [
+                          child: Row(children: [
                             Text(
-                              "Selecciona la opción",
-                              style: TextStyle(fontSize: 16),
+                              optionsTitle,
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Spacer(),
                             Icon(Icons.arrow_drop_down_circle_outlined)
@@ -87,9 +90,9 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.grey),
-                          child: const Row(children: [
+                          child: Row(children: [
                             Text(
-                              "",
+                              date,
                               style: TextStyle(fontSize: 16),
                             ),
                             Spacer(),
@@ -137,7 +140,11 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 30)),
-    );
+    ).then((value) {
+      setState(() {
+        date = value.toString().replaceAll(" 00:00:00.000", "");
+      });
+    });
   }
 
   void openDropdown() {
@@ -152,12 +159,18 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                   ListTile(
                     title: const Text('Presencial'),
                     onTap: () {
+                      setState(() {
+                        optionsTitle = "Presencial";
+                      });
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
                     title: const Text('Virtual'),
                     onTap: () {
+                      setState(() {
+                        optionsTitle = "Virtual";
+                      });
                       Navigator.of(context).pop();
                     },
                   )
