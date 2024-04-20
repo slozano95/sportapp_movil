@@ -16,8 +16,8 @@ class EntrenamientoService {
       var data = List<EntrenamientosModel>.from(json
           .decode(response.body)
           .map((x) => EntrenamientosModel.fromJson(x)));
-      print("Request successful getAll exercises");
-      print(response.body);
+      // print("Request successful getAll exercises");
+      // print(response.body);
       return data;
     } else {
       print("Request failed with status: ${response.statusCode}");

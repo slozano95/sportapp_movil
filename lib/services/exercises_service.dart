@@ -15,8 +15,8 @@ class ExercisesService {
     if (response.statusCode == 200) {
       var data = List<ExercisesApiModel>.from(
           json.decode(response.body).map((x) => ExercisesApiModel.fromJson(x)));
-      print("Request successful getAll exercises");
-      print(response.body);
+      // print("Request successful getAll exercises");
+      // print(response.body);
       return data;
     } else {
       print("Request failed with status: ${response.statusCode}");

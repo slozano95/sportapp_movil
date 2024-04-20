@@ -123,7 +123,6 @@ class UIComponents {
       Expanded(
           child: GestureDetector(
               onTap: () {
-                print("NAV");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CalendarActivities()),

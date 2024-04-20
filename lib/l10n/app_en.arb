@@ -49,5 +49,6 @@
   "plan_basico": "Basic Plan",
   "plan_medio": "Medium Plan",
   "idioma": "Select your Language",
-  "dep_exitoso_Aceptar": "Accept"
+  "dep_exitoso_Aceptar": "Accept",
+  "sign_in": "Sign In"
 }

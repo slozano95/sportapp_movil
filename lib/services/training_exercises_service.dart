@@ -28,7 +28,7 @@ class TrainingExercisesService {
         "numero_repeticiones": value.toString()
       });
     });
-    print(data);
+    // print(data);
     final url = '${baseUrl}/entrenamientos';
     final response = await http.post(
       Uri.parse(url),
@@ -37,8 +37,8 @@ class TrainingExercisesService {
     );
 
     if (response.statusCode == 201) {
-      print("Request successful");
-      print(response.body);
+      // print("Request successful");
+      // print(response.body);
       return true;
     } else {
       print("Request failed with status: ${response.statusCode}");
