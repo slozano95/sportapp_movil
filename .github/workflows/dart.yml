@@ -2,13 +2,14 @@ name: Dart
 
 on:
   push:
-    branches: [ "main" ,"feature/*"]
-  pull_request:
-    types:
-      - opened
     branches:
-      - 'develop'
-    
+      - main
+      - 'feature/*'
+  pull_request:
+    types: [opened]
+    branches:
+      - develop
+
 jobs:
   build:
     runs-on: ubuntu-latest
