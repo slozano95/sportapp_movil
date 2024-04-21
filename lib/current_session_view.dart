@@ -4,7 +4,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
 import 'UI/components.dart';
 
 class CurrentSessionView extends StatefulWidget {
@@ -17,6 +20,8 @@ class CurrentSessionView extends StatefulWidget {
 class _CurrentSessionViewState extends State<CurrentSessionView> {
   bool _isSessionActive = false;
   bool _isSessionEnded = false;
+  bool _isRunning = false;
+
 
   Stopwatch? _stopwatch;
   Timer? _viewTimer;
@@ -106,11 +111,9 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                       const SizedBox(width: 10),
                       Container(
                           height: 54,
-                          child: const Center(
-                              child: Image(
-                                  image:
-                                      AssetImage("assets/icon_heartbeat.png"),
-                                  width: 35)))
+                          child: Center(
+                              child: animationHeart(isRunning: _isRunning)
+                                  ))
                     ]),
                     const SizedBox(height: 50),
                     !_isSessionEnded
@@ -247,6 +250,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
     });
     _stopwatch = Stopwatch();
     _stopwatch?.start();
+    _isRunning = true;
     _simulateHeartRate();
   }
 
@@ -254,6 +258,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
     _viewTimer?.cancel();
     _heartRateTimer?.cancel();
     _stopwatch?.stop();
+    _isRunning = false;
   }
 
   void toggleSession() {
