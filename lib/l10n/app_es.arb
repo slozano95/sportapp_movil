@@ -47,8 +47,11 @@
   "perfil_message": "Increbile, sigue así!",
   "plan_premium": "Plan Premium",
   "plan_basico": "Plan Basico",
-  "plan_medio": "Plan Medio",
+  "plan_medio": "Plan Intermedio",
   "idioma": "Selecciona tu Idioma",
   "dep_exitoso_Aceptar": "Aceptar",
-  "sign_in": "Ingresar"
+  "sign_in": "Ingresar",
+
+  "heart_start": "iniciar",
+  "heart_stop": "Finalizar"
 }

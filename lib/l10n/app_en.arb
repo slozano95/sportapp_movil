@@ -47,8 +47,11 @@
   "perfil_message": "Increbile keep it up!",
   "plan_premium": "Premium Plan",
   "plan_basico": "Basic Plan",
-  "plan_medio": "Medium Plan",
+  "plan_medio": "Intermediate Plan",
   "idioma": "Select your Language",
   "dep_exitoso_Aceptar": "Accept",
-  "sign_in": "Sign In"
+  "sign_in": "Sign In",
+
+  "heart_start": "Start",
+  "heart_stop": "Stop"
 }
