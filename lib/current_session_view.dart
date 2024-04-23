@@ -124,7 +124,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                               Text(
+                              Text(
                                 AppLocalizations.of(context)!.entr_ftp,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
@@ -136,7 +136,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                               Text(
+                              Text(
                                 AppLocalizations.of(context)!.entr_max,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
@@ -148,21 +148,24 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                         ? Center(
                             child: UIComponents.button(
                                 _isSessionActive
-                                    ? AppLocalizations.of(context)!.entr_end_session
-                                    : AppLocalizations.of(context)!.entr_start_session, () {
+                                    ? AppLocalizations.of(context)!
+                                        .entr_end_session
+                                    : AppLocalizations.of(context)!
+                                        .entr_start_session, () {
                             toggleSession();
                           }))
                         : Column(children: [
                             Center(
-                                child:
-                                    UIComponents.button(AppLocalizations.of(context)!.entr_plan_nutricional, () {
+                                child: UIComponents.button(
+                                    AppLocalizations.of(context)!
+                                        .entr_plan_nutricional, () {
                               //TODO
                             })),
                             const SizedBox(height: 34),
                             Center(
                                 child: UIComponents.button(
-                                    AppLocalizations.of(context)!.entr_plan_recuperacion,
-                                     () {
+                                    AppLocalizations.of(context)!
+                                        .entr_plan_recuperacion, () {
                               //TODO
                             }))
                           ])
@@ -181,7 +184,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title:  Text(AppLocalizations.of(context)!.dep_exitoso),
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
           content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
