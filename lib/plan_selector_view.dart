@@ -5,6 +5,7 @@ import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/training_plan_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/heart_monitoring.dart';
 
 import 'UI/components.dart';
 
@@ -39,9 +40,6 @@ extension PlanFeaturesExtension on PlanFeatures {
     }
   }
 }
-
-
-
 
 extension PlanOptionExtension on PlanOption  { 
   String get name {
@@ -143,6 +141,9 @@ class _PlanSelectorState extends State<PlanSelector> {
             case PlanFeatures.trainingPlan:
               goToTrainingPlan();
               break;
+            case PlanFeatures.heartRate:
+              goToHeartMonitoring();
+              break;
             default:
               break;
           }
@@ -201,6 +202,13 @@ class _PlanSelectorState extends State<PlanSelector> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => TrainingPlanView()),
+    );
+  }
+
+    void goToHeartMonitoring() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HeartMonitoring()),
     );
   }
 }

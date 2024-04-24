@@ -46,7 +46,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                   child: Container(
                       width: 30,
                       height: 30,
-                      key: Key("icon_back"),
+                      key: const Key("icon_back"),
                       color: Colors.transparent,
                       child: const Image(
                           image: AssetImage("assets/icon_back.png"),

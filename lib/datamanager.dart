@@ -4,6 +4,8 @@ import 'package:sportapp_movil/services/exercises_service.dart';
 import 'package:sportapp_movil/services/models/entrenamiento_api_model.dart';
 import 'package:sportapp_movil/services/models/eventos_api_model.dart';
 import 'package:sportapp_movil/services/models/exercises_api_model.dart';
+import 'package:sportapp_movil/services/models/simulator_api_model.dart';
+import 'package:sportapp_movil/services/simulator_service.dart';
 
 class DataManager {
   static final DataManager _singleton = DataManager._internal();
@@ -29,7 +31,6 @@ class DataManager {
 
   void initData() {
     getEntrenamientos();
-
     getExercises();
     getEventos();
   }
@@ -58,5 +59,10 @@ class DataManager {
   Future<void> getCalendarData() async {
     await getEntrenamientos();
     await getEventos();
+  }
+
+  Future<SimulatorApiModel?> getHeartRate() async {
+    var service = SimulatorService();
+    return await service.getAll();
   }
 }
