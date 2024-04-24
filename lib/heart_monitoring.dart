@@ -1,8 +1,13 @@
+import 'dart:async';
+
+
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sportapp_movil/animation_monitoring.dart';
+import 'package:sportapp_movil/services/models/simulator_api_model.dart';
 
 import 'UI/components.dart';
 
@@ -15,10 +20,19 @@ class HeartMonitoring extends StatefulWidget {
 
 class _HeartMonitoringState extends State<HeartMonitoring> {
   bool _isSessionActive = false;
-  bool _isSessionEnded = false;
+  bool _isSessionEnded = true;
   bool _isRunning = false;
+  String _heartRate = "Loading ...";
+  Timer? _timer;
+  int counter = 1;
 
-  int _heartRate = 0;
+  SimulatorApiModel? jsonValue;
+
+  @override
+  void initState() {
+    super.initState();
+    initTimer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,39 +63,62 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.plan_medio,
-                        style: AppTypography.heading,
-                        textAlign: TextAlign.start),
-                    const SizedBox(height: 40),
-                    Text(AppLocalizations.of(context)!.menu_ritmo,
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    GestureDetector(
+                        onTap: () {
+                          addCount();
+                        },
+                        child: Container(
+                            color: Colors.transparent,
+                            child: Text(
+                                AppLocalizations.of(context)!.menu_ritmo,
+                                style: AppTypography.heading,
+                                textAlign: TextAlign.start))),
                     const SizedBox(height: 60),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Container(
+                      SizedBox(
                           height: 54,
                           child: Center(
-                              child: AnimationMonitoring(isRunning: _isRunning)
-                                  ))
+                              child:
+                                  AnimationMonitoring(isRunning: _isRunning)))
                     ]),
-                     const SizedBox(height: 90),
-                    !_isSessionEnded
-                    ?
-                    Center(
-                       
+                    const SizedBox(height: 90),
+                    _isRunning
+                        ? Column(children: [
+                            Center(
+                                child: Text("Actual",
+                                    style: TextStyle(fontSize: 20))),
+                            Center(
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                  Text(_heartRate.toString(),
+                                      maxLines: 2,
+                                      style: const TextStyle(
+                                        fontSize: 40,
+                                      )),
+                                  const Text("BPM",
+                                      style: TextStyle(fontSize: 14))
+                                ]))
+                          ])
+                        : SizedBox(),
+                    const SizedBox(height: 20),
+                    _isSessionEnded
+                        ? Center(
                             child: UIComponents.button(
-                                _isSessionActive
-                                    ? AppLocalizations.of(context)!.heart_start
-                                    : AppLocalizations.of(context)!.heart_start, () {
-                            toggleSession();
+                                AppLocalizations.of(context)!.heart_start, () {
+                            startSession();
                           }))
-                     :  Center(
-                                child:
-                                    UIComponents.button(AppLocalizations.of(context)!.heart_stop, () {
-                              //TODO
-                            })),
-                  ])
-                  )),
+                        : Center(
+                            child: UIComponents.button(
+                                AppLocalizations.of(context)!.heart_stop, () {
+                            stopSession();
+                          })),
+                    SizedBox(height: 40),
+                    (counter % 7 == 0)
+                        ? Text(jsonValue?.toJson().toString() ?? "")
+                        : SizedBox()
+                  ]))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
   }
@@ -94,25 +131,39 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
     return _heartRate.toString();
   }
 
-  void startStopwatch() {
-    _heartRate = 120;
-    _isRunning = true;
-    //_simulateHeartRate();
-
+  void startSession() {
+    setState(() {
+      _isSessionActive = true;
+      _isSessionEnded = false;
+      _isRunning = true;
+    });
   }
 
-
-
-   void toggleSession() {
-    _isSessionActive = !_isSessionActive;
-    if (!_isSessionActive) {
-      setState(() {
-        _isSessionEnded = true;
-      });
-    } else {
-      startStopwatch();
-    }
+  void stopSession() {
+    setState(() {
+      _isSessionActive = false;
+      _isSessionEnded = true;
+      _isRunning = false;
+    });
   }
 
-} 
+  void initTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
+      if (_isRunning) {
+        print("CALLING");
+        DataManager().getHeartRate().then((value) {
+          jsonValue = value;
+          setState(() {
+            _heartRate = value?.heartRate.toString() ?? "Loading...";
+          });
+        });
+      }
+    });
+  }
 
+  void addCount() {
+    setState(() {
+      counter++;
+    });
+  }
+}
