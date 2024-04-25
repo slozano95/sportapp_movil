@@ -3,9 +3,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/services/models/strava_activity_api_model.dart';
 
 import 'UI/components.dart';
 
@@ -268,6 +270,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       setState(() {
         _isSessionEnded = true;
       });
+      sendSessionData();
     } else {
       startStopwatch();
     }
@@ -324,5 +327,14 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                 ])),
           );
         });
+  }
+
+  void sendSessionData() {
+    var model = StravaActivityApiModel(
+        elapsed_time: 120,
+        name: "Test",
+        sport_type: "Run",
+        start_date_local: DateTime.now().toIso8601String());
+    DataManager().addPendingActivity(model);
   }
 }

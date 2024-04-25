@@ -7,6 +7,7 @@ import 'package:sportapp_movil/current_session_view.dart';
 import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
+import 'package:sportapp_movil/services/strava_service.dart';
 import 'package:sportapp_movil/strava_connected.dart';
 import 'package:sportapp_movil/training_exercises_view.dart';
 import 'package:sportapp_movil/web_view.dart';
@@ -124,6 +125,7 @@ class _StravaConnectionViewState extends State<StravaConnectionView> {
     if ((code as String) != "") {
       print("CODE FROM STRAVA: $code");
       DataManager().stravaCode = code;
+      StravaService().getToken(false);
       Navigator.pop(context);
       Navigator.push(
         context,

@@ -30,7 +30,7 @@ class _WebViewState extends State<WebView> {
             return NavigationDecision.navigate;
           }))
       ..loadRequest(Uri.parse(
-          'https://www.strava.com/api/v3/oauth/authorize?response_type=code&client_id=125569&redirect_uri=https%3A%2F%2Fdevelopers.strava.com%2Foauth2-redirect%2F&scope=activity%3Aread_all'));
+          'https://www.strava.com/api/v3/oauth/authorize?response_type=code&client_id=125569&redirect_uri=https%3A%2F%2Fdevelopers.strava.com%2Foauth2-redirect%2F&scope=activity:read_all,activity:write'));
 
     return Scaffold(
       appBar: AppBar(title: const Text('Strava Authorization')),

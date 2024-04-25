@@ -46,6 +46,7 @@ dependencies:
   http: ^1.2.0
   nock: ^1.2.3
   webview_flutter: ^4.5.0
+  shared_preferences: ^2.2.3
   
 dev_dependencies:
   flutter_test:
