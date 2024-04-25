@@ -45,7 +45,8 @@ dependencies:
   hrk_flutter_test_batteries: ^0.8.0
   http: ^1.2.0
   nock: ^1.2.3
-
+  webview_flutter: ^4.5.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

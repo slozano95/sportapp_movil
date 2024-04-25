@@ -4,6 +4,7 @@ import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/calendar_activities.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/profile_view.dart';
+import 'package:sportapp_movil/sincronize_view.dart';
 
 enum TabItem { home, profile, calendar, book }
 
@@ -106,7 +107,7 @@ class UIComponents {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CalendarActivities()),
+                  MaterialPageRoute(builder: (context) => SincronizeView()),
                 );
               },
               child: Container(

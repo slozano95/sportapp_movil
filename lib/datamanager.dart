@@ -13,6 +13,8 @@ class DataManager {
   List<EntrenamientosModel> allEntrenamientos = [];
   List<EventosApiModel> allEventos = [];
 
+  String stravaCode = "";
+
   factory DataManager() {
     return _singleton;
   }
