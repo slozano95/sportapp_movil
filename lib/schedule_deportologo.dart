@@ -49,7 +49,8 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                         style: AppTypography.heading,
                         textAlign: TextAlign.start),
                     const SizedBox(height: 40),
-                    Text(AppLocalizations.of(context)!.dep_agendar,
+                    Text(
+                      AppLocalizations.of(context)!.dep_agendar,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 14),
@@ -66,7 +67,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                               color: AppColors.grey),
                           child: Row(children: [
                             Text(
-                              AppLocalizations.of(context)!.dep_opcion,
+                              optionsTitle,
                               style: const TextStyle(fontSize: 16),
                             ),
                             Spacer(),
@@ -74,7 +75,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                           ])),
                     ),
                     const SizedBox(height: 30),
-                     Text(
+                    Text(
                       AppLocalizations.of(context)!.dep_fecha,
                       style: TextStyle(fontSize: 16),
                     ),
@@ -101,7 +102,8 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                     ),
                     const SizedBox(height: 50),
                     Center(
-                        child: UIComponents.button(AppLocalizations.of(context)!.dep_guardar, () {
+                        child: UIComponents.button(
+                            AppLocalizations.of(context)!.dep_guardar, () {
                       saveSession();
                     }))
                   ]))),
@@ -126,7 +128,7 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
               onPressed: () {
                 goBack();
               },
-              child:Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
+              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
             ),
           ],
         );
@@ -152,7 +154,9 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: Text(AppLocalizations.of(context)!.dep_opcion,),
+              title: Text(
+                AppLocalizations.of(context)!.dep_opcion,
+              ),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[

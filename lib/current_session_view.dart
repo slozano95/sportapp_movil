@@ -2,9 +2,16 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
+import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/services/models/simulator_api_model.dart';
+import 'package:sportapp_movil/services/models/strava_new_activity_api_model.dart';
+import 'package:sportapp_movil/services/strava_service.dart';
+
 import 'UI/components.dart';
 
 class CurrentSessionView extends StatefulWidget {
@@ -17,15 +24,20 @@ class CurrentSessionView extends StatefulWidget {
 class _CurrentSessionViewState extends State<CurrentSessionView> {
   bool _isSessionActive = false;
   bool _isSessionEnded = false;
+  bool _isRunning = false;
 
   Stopwatch? _stopwatch;
   Timer? _viewTimer;
   Timer? _heartRateTimer;
   int _totalCals = 0;
   int _activeCals = 0;
-  int _totalCalsRate = 500;
+  int _totalCalsRate = 400;
   int _activeCalsRate = 2;
   int _heartRate = 0;
+  int _onCaloriesCount = 10;
+  SimulatorApiModel? jsonValue;
+
+  int counter = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                   child: Container(
                       width: 30,
                       height: 30,
-                      key: Key("icon_back"),
+                      key: const Key("icon_back"),
                       color: Colors.transparent,
                       child: const Image(
                           image: AssetImage("assets/icon_back.png"),
@@ -57,9 +69,15 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.title,
-                        style: AppTypography.heading,
-                        textAlign: TextAlign.start),
+                    GestureDetector(
+                        onTap: () {
+                          addCount();
+                        },
+                        child: Container(
+                            color: Colors.transparent,
+                            child: Text(widget.title,
+                                style: AppTypography.heading,
+                                textAlign: TextAlign.start))),
                     const SizedBox(height: 40),
                     SizedBox(
                       width: double.infinity,
@@ -106,13 +124,13 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                       const SizedBox(width: 10),
                       Container(
                           height: 54,
-                          child: const Center(
-                              child: Image(
-                                  image:
-                                      AssetImage("assets/icon_heartbeat.png"),
-                                  width: 35)))
+                          child: Center(
+                              child: animationHeart(isRunning: _isRunning)))
                     ]),
                     const SizedBox(height: 50),
+                    (counter % 7 == 0)
+                        ? Text(jsonValue?.toJson().toString() ?? "")
+                        : SizedBox(),
                     !_isSessionEnded
                         ? SizedBox()
                         : Row(
@@ -124,7 +142,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                               Text(
+                              Text(
                                 AppLocalizations.of(context)!.entr_ftp,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
@@ -136,7 +154,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 style: const TextStyle(fontSize: 32),
                               ),
                               const SizedBox(width: 10),
-                               Text(
+                              Text(
                                 AppLocalizations.of(context)!.entr_max,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15),
@@ -148,21 +166,24 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                         ? Center(
                             child: UIComponents.button(
                                 _isSessionActive
-                                    ? AppLocalizations.of(context)!.entr_end_session
-                                    : AppLocalizations.of(context)!.entr_start_session, () {
+                                    ? AppLocalizations.of(context)!
+                                        .entr_end_session
+                                    : AppLocalizations.of(context)!
+                                        .entr_start_session, () {
                             toggleSession();
                           }))
                         : Column(children: [
                             Center(
-                                child:
-                                    UIComponents.button(AppLocalizations.of(context)!.entr_plan_nutricional, () {
-                              //TODO
+                                child: UIComponents.button(
+                                    AppLocalizations.of(context)!
+                                        .entr_plan_nutricional, () {
+                              // showWaterReminder();
                             })),
                             const SizedBox(height: 34),
                             Center(
                                 child: UIComponents.button(
-                                    AppLocalizations.of(context)!.entr_plan_recuperacion,
-                                     () {
+                                    AppLocalizations.of(context)!
+                                        .entr_plan_recuperacion, () {
                               //TODO
                             }))
                           ])
@@ -172,6 +193,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   }
 
   void goBack() {
+    stopStopwatch();
     Navigator.of(context).pop();
   }
 
@@ -181,7 +203,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title:  Text(AppLocalizations.of(context)!.dep_exitoso),
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
           content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
           actions: [
             TextButton(
@@ -210,10 +232,6 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   }
 
   String getCurrentTimerValue() {
-    return getFormattedText();
-  }
-
-  String getFormattedText() {
     var milli = _stopwatch?.elapsed.inMilliseconds ?? 0;
 
     String milliseconds = (milli % 1000).toString().padLeft(3, "0");
@@ -247,6 +265,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
     });
     _stopwatch = Stopwatch();
     _stopwatch?.start();
+    _isRunning = true;
     _simulateHeartRate();
   }
 
@@ -254,6 +273,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
     _viewTimer?.cancel();
     _heartRateTimer?.cancel();
     _stopwatch?.stop();
+    _isRunning = false;
   }
 
   void toggleSession() {
@@ -263,6 +283,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       setState(() {
         _isSessionEnded = true;
       });
+      sendSessionData();
     } else {
       startStopwatch();
     }
@@ -274,18 +295,22 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       _activeCals += 1;
     }
     _totalCals += 1;
+    if (_totalCals % _onCaloriesCount == 0) {
+      showWaterReminder();
+    }
   }
 
   void _simulateHeartRate() {
     _heartRateTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      var randomInit = Random().nextInt(2);
-      if (_heartRate >= 160) {
-        _heartRate = _heartRate - Random().nextInt(10);
-      } else if (_heartRate <= 70) {
-        _heartRate = _heartRate + Random().nextInt(10);
+      if (_isRunning) {
+        DataManager().getHeartRate().then((value) {
+          jsonValue = value;
+          setState(() {
+            _heartRate = value?.heartRate ?? 0;
+          });
+        });
       } else {
-        _heartRate =
-            _heartRate + (Random().nextInt(5) * (randomInit == 0 ? -1 : 1));
+        timer.cancel();
       }
     });
   }
@@ -296,5 +321,44 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
 
   String getFTPValue() {
     return (Random().nextInt(20) + 100).toString();
+  }
+
+  void showWaterReminder() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Container(
+                height: 180,
+                child: Column(children: [
+                  Image(image: AssetImage("assets/icon_water.png"), width: 50),
+                  SizedBox(height: 20),
+                  Text("Toma Agua", style: TextStyle(fontSize: 20)),
+                  SizedBox(height: 20),
+                  UIComponents.button("Continuar", () {
+                    Navigator.of(context).pop();
+                  })
+                ])),
+          );
+        });
+  }
+
+  void sendSessionData() {
+    var seconds = _stopwatch?.elapsed.inSeconds ?? 0;
+    var model = StravaNewActivityApiModel(
+        elapsed_time: seconds,
+        name: widget.title,
+        sport_type: "Run",
+        start_date_local: DateTime.now()
+            .subtract(Duration(seconds: seconds))
+            .toIso8601String());
+    DataManager().addPendingActivity(model);
+  }
+
+  void addCount() {
+    _totalCalsRate = 40;
+    setState(() {
+      counter++;
+    });
   }
 }

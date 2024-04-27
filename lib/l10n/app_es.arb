@@ -44,11 +44,14 @@
   "perfil_eventosasis": "Eventos asistidos",
   "perfil_avance": "Avance",
   "perfil_peso": "Pesos",
-  "perfil_message": "Increbile, sigue así!",
+  "perfil_message": "Increible, sigue así!",
   "plan_premium": "Plan Premium",
   "plan_basico": "Plan Basico",
-  "plan_medio": "Plan Medio",
+  "plan_medio": "Plan Intermedio",
   "idioma": "Selecciona tu Idioma",
   "dep_exitoso_Aceptar": "Aceptar",
-  "sign_in": "Ingresar"
+  "sign_in": "Ingresar",
+
+  "heart_start": "Iniciar",
+  "heart_stop": "Finalizar"
 }

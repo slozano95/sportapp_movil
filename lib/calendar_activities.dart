@@ -41,14 +41,60 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
   List<Event> _getEventsForDay(DateTime day) {
     List<Event> events = [];
     for (var element in DataManager().allEntrenamientos) {
-      var date = DateTime.parse(element.fechaEntrenamiento ?? "");
-      if (date.year == day.year &&
-          date.month == day.month &&
-          date.day == day.day) {
-        events.add(Event(("Entrenamiento: ${element.nombre}")));
+      var fecha = element.fechaEntrenamiento ?? "";
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(("Entrenamiento: ${element.nombre}")));
+        }
+      } catch (e) {
+        print("Error parsing date 1 " + fecha);
+      }
+    }
+    for (var element in DataManager()
+        .allEventos
+        .where((element) => element.evento != null)) {
+      var fecha = element.evento?.fechaEvento ?? "";
+
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(("Evento: ${element.evento?.nombre}")));
+        }
+      } catch (e) {
+        print("Error parsing date 2 " + fecha);
+        print(DataManager().allEventos);
+      }
+    }
+    for (var element in DataManager().stravaActivities) {
+      var fecha = element.start_date_local ?? "";
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(
+              ("Strava: ${element.name} (${getReadableTime(element.elapsed_time)})")));
+        }
+      } catch (e) {
+        print("Error parsing date 3 " + fecha);
       }
     }
     return events;
+  }
+
+  String getReadableTime(int? elapsed_time) {
+    if (elapsed_time == null) {
+      return "";
+    }
+    var hours = (elapsed_time / 3600).floor();
+    var minutes = ((elapsed_time % 3600) / 60).floor();
+    var seconds = (elapsed_time % 60);
+    return "${hours}h: ${minutes}m: ${seconds}s";
   }
 
   List<Event> _getEventsForRange(DateTime start, DateTime end) {

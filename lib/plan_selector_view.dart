@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/current_session_view.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/training_plan_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/heart_monitoring.dart';
 
 import 'UI/components.dart';
 
@@ -40,10 +42,7 @@ extension PlanFeaturesExtension on PlanFeatures {
   }
 }
 
-
-
-
-extension PlanOptionExtension on PlanOption  { 
+extension PlanOptionExtension on PlanOption {
   String get name {
     switch (this) {
       case PlanOption.premium:
@@ -127,7 +126,13 @@ class _PlanSelectorState extends State<PlanSelector> {
                         const SizedBox(width: 12),
                         Expanded(child: planCell(PlanFeatures.events)),
                       ],
-                    )
+                    ),
+                    const SizedBox(height: 20),
+                    Center(
+                        child: Text(getAppVersion(),
+                            style: const TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 129, 129, 129))))
                   ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
@@ -142,6 +147,9 @@ class _PlanSelectorState extends State<PlanSelector> {
               break;
             case PlanFeatures.trainingPlan:
               goToTrainingPlan();
+              break;
+            case PlanFeatures.heartRate:
+              goToHeartMonitoring();
               break;
             default:
               break;
@@ -183,6 +191,10 @@ class _PlanSelectorState extends State<PlanSelector> {
             ])));
   }
 
+  String getAppVersion() {
+    return DataManager().version;
+  }
+
   void signOut() {
     Navigator.pushReplacement(
       context,
@@ -201,6 +213,13 @@ class _PlanSelectorState extends State<PlanSelector> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => TrainingPlanView()),
+    );
+  }
+
+  void goToHeartMonitoring() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HeartMonitoring()),
     );
   }
 }

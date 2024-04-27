@@ -21,6 +21,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
   Map<String, int> counts = {};
   var nombreController = TextEditingController();
   String date = "";
+
   @override
   void initState() {
     for (var element in DataManager().allExercises) {
@@ -59,9 +60,11 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    Text(AppLocalizations.of(context)!.entr_add_title, style: AppTypography.heading),
+                    Text(AppLocalizations.of(context)!.entr_add_title,
+                        style: AppTypography.heading),
                     const SizedBox(height: 40),
-                          Text(AppLocalizations.of(context)!.entr_add_nombre,
+                    Text(
+                      AppLocalizations.of(context)!.entr_add_nombre,
                       style: TextStyle(fontSize: 20),
                     ),
                     Container(
@@ -154,7 +157,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                 Text(description, style: AppTypography.body),
                 const Spacer(),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(AppLocalizations.of(context)!.entr_add_reps),
+                  Text(AppLocalizations.of(context)!.entr_add_reps),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
