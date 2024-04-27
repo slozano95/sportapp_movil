@@ -2,11 +2,13 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/services/models/simulator_api_model.dart';
 import 'package:sportapp_movil/services/models/strava_new_activity_api_model.dart';
 import 'package:sportapp_movil/services/strava_service.dart';
 
@@ -29,10 +31,14 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   Timer? _heartRateTimer;
   int _totalCals = 0;
   int _activeCals = 0;
-  int _totalCalsRate = 40;
+  int _totalCalsRate = 400;
   int _activeCalsRate = 2;
   int _heartRate = 0;
   int _onCaloriesCount = 10;
+  SimulatorApiModel? jsonValue;
+
+  int counter = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +69,15 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.title,
-                        style: AppTypography.heading,
-                        textAlign: TextAlign.start),
+                    GestureDetector(
+                        onTap: () {
+                          addCount();
+                        },
+                        child: Container(
+                            color: Colors.transparent,
+                            child: Text(widget.title,
+                                style: AppTypography.heading,
+                                textAlign: TextAlign.start))),
                     const SizedBox(height: 40),
                     SizedBox(
                       width: double.infinity,
@@ -116,6 +128,9 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                               child: animationHeart(isRunning: _isRunning)))
                     ]),
                     const SizedBox(height: 50),
+                    (counter % 7 == 0)
+                        ? Text(jsonValue?.toJson().toString() ?? "")
+                        : SizedBox(),
                     !_isSessionEnded
                         ? SizedBox()
                         : Row(
@@ -178,6 +193,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   }
 
   void goBack() {
+    stopStopwatch();
     Navigator.of(context).pop();
   }
 
@@ -286,14 +302,15 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
 
   void _simulateHeartRate() {
     _heartRateTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      var randomInit = Random().nextInt(2);
-      if (_heartRate >= 160) {
-        _heartRate = _heartRate - Random().nextInt(10);
-      } else if (_heartRate <= 70) {
-        _heartRate = _heartRate + Random().nextInt(10);
+      if (_isRunning) {
+        DataManager().getHeartRate().then((value) {
+          jsonValue = value;
+          setState(() {
+            _heartRate = value?.heartRate ?? 0;
+          });
+        });
       } else {
-        _heartRate =
-            _heartRate + (Random().nextInt(5) * (randomInit == 0 ? -1 : 1));
+        timer.cancel();
       }
     });
   }
@@ -336,5 +353,12 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
             .subtract(Duration(seconds: seconds))
             .toIso8601String());
     DataManager().addPendingActivity(model);
+  }
+
+  void addCount() {
+    _totalCalsRate = 40;
+    setState(() {
+      counter++;
+    });
   }
 }
