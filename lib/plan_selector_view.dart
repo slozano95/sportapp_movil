@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/current_session_view.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/training_plan_view.dart';
@@ -127,7 +128,11 @@ class _PlanSelectorState extends State<PlanSelector> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Center(child: Text(getAppVersion()))
+                    Center(
+                        child: Text(getAppVersion(),
+                            style: const TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 129, 129, 129))))
                   ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
@@ -187,7 +192,7 @@ class _PlanSelectorState extends State<PlanSelector> {
   }
 
   String getAppVersion() {
-    return "1.0.0";
+    return DataManager().version;
   }
 
   void signOut() {

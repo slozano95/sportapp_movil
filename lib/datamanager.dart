@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportapp_movil/profile_view.dart';
 import 'package:sportapp_movil/services/deportista_service.dart';
@@ -33,6 +34,8 @@ class DataManager {
   String stravaRefreshToken = "";
   int expiresAt = 0;
 
+  String version = "";
+
   factory DataManager() {
     return _singleton;
   }
@@ -50,6 +53,9 @@ class DataManager {
   }
 
   void initData() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    version = "${packageInfo.version}(${packageInfo.buildNumber})";
+
     getEntrenamientos();
     getExercises();
     getEventos();
