@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sportapp_movil/profile_view.dart';
+import 'package:sportapp_movil/services/deportista_service.dart';
 import 'package:sportapp_movil/services/entrenamiento_service.dart';
 import 'package:sportapp_movil/services/eventos_service.dart';
 import 'package:sportapp_movil/services/exercises_service.dart';
@@ -19,6 +22,7 @@ class DataManager {
   List<EventosApiModel> allEventos = [];
   List<StravaNewActivityApiModel> allPendingActivities = [];
   List<StravaNewActivityApiModel> stravaActivities = [];
+  ProfileData? profileData = ProfileData();
   Timer? stravaTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
     sendPendingActivities();
   });
@@ -47,14 +51,15 @@ class DataManager {
 
   void initData() async {
     getEntrenamientos();
-    // getExercises();
-    // // getEventos();
-    // // await readData();
-    // // checkStravaToken();
-    // // syncStravaActivites();
-    // // stravaSyncTimer = Timer.periodic(const Duration(minutes: 3), (timer) {
-    // //   syncStravaActivites();
-    // // });
+    getExercises();
+    getEventos();
+    getProfileData();
+    await readData();
+    checkStravaToken();
+    syncStravaActivites();
+    stravaSyncTimer = Timer.periodic(const Duration(minutes: 3), (timer) {
+      syncStravaActivites();
+    });
   }
 
   Future<void> getExercises() async {
@@ -81,7 +86,9 @@ class DataManager {
   Future<void> getCalendarData() async {
     await getEntrenamientos();
     await getEventos();
-    await StravaService().getActivities();
+    if (stravaRefreshToken.isNotEmpty) {
+      await StravaService().getActivities();
+    }
   }
 
   Future<SimulatorApiModel?> getHeartRate() async {
@@ -146,5 +153,33 @@ class DataManager {
       stravaRefreshToken = prefs.getString('stravaRefreshToken') ?? "";
       expiresAt = prefs.getInt('expiresAt') ?? 0;
     });
+  }
+
+  Future<void> getProfileData() async {
+    var localProfiledata = ProfileData();
+    await DeportistaService().getData().then((value) {
+      localProfiledata.weight = value?.pesoInicial ?? 0.0;
+      localProfiledata.newWeight = value?.pesoActual ?? 0.0;
+      localProfiledata.imc =
+          calculateImc(localProfiledata.weight, value?.altura ?? 1.0);
+      localProfiledata.newImc =
+          calculateImc(localProfiledata.newWeight, value?.altura ?? 1.0);
+    });
+    await EntrenamientoService().getCompletados().then((value) {
+      localProfiledata.lastMonthTrainings = value;
+    });
+    await EventosService().getAsistidos().then((value) {
+      localProfiledata.lastMonthEvents = value;
+    });
+
+    localProfiledata.sessions =
+        localProfiledata.lastMonthTrainings + localProfiledata.lastMonthEvents;
+    localProfiledata.progress = double.parse(
+        ((localProfiledata.sessions / 30) * 100).toStringAsFixed(2));
+    profileData = localProfiledata;
+  }
+
+  double calculateImc(double weight, double height) {
+    return double.parse((weight / (height * height)).toStringAsFixed(2));
   }
 }

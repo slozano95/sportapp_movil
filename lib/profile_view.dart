@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/current_session_view.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
 import 'package:sportapp_movil/calendar_activities.dart';
 import 'package:sportapp_movil/training_plan_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components.dart';
+
+class ProfileData {
+  double progress = 0;
+  int sessions = 0;
+  int lastMonthTrainings = 0;
+  int lastMonthEvents = 0;
+  double weight = 0;
+  double imc = 0;
+  double newWeight = 0;
+  double newImc = 0;
+}
 
 class ProfileView extends StatefulWidget {
   ProfileView({super.key});
@@ -16,13 +28,15 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  String title = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
             child: Column(children: [
       Container(
-          padding: const EdgeInsets.fromLTRB(38, 12, 0, 0),
+          padding: const EdgeInsets.fromLTRB(38, 12, 38, 0),
           child: Row(
             children: [
               GestureDetector(
@@ -30,7 +44,21 @@ class _ProfileViewState extends State<ProfileView> {
                     signOut();
                   },
                   child: const Image(
-                      image: AssetImage("assets/icon_logout.png"), width: 30))
+                      image: AssetImage("assets/icon_logout.png"), width: 30)),
+              const Spacer(),
+              Text(title),
+              const Spacer(),
+              GestureDetector(
+                  onTap: () {
+                    reloadData();
+                  },
+                  child: Container(
+                      width: 30,
+                      height: 30,
+                      key: Key("icon_back"),
+                      color: Colors.transparent,
+                      child:
+                          Icon(Icons.replay_outlined, color: AppColors.orange)))
             ],
           )),
       Expanded(
@@ -45,63 +73,74 @@ class _ProfileViewState extends State<ProfileView> {
                         style: AppTypography.heading,
                         textAlign: TextAlign.left),
                     const SizedBox(height: 60),
-                    Text( AppLocalizations.of(context)!.perfil_proceso, style: AppTypography.medium),
+                    Text(AppLocalizations.of(context)!.perfil_proceso,
+                        style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        SizedBox(width: 50),
-                        Text("35%", style: AppTypography.body),
-                        Spacer(),
-                        Text("Sesiones:\n17/30",
+                        const Spacer(flex: 1),
+                        Text("${DataManager().profileData?.progress ?? 0}%",
+                            style: AppTypography.body),
+                        const Spacer(flex: 2),
+                        Text(
+                            "Sesiones:\n${(DataManager().profileData?.sessions ?? 0)}/30",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        SizedBox(width: 50),
+                        const Spacer(flex: 1),
                       ],
                     ),
                     const SizedBox(height: 60),
-                    Text( AppLocalizations.of(context)!.perfil_ultimomes, style: AppTypography.medium),
+                    Text(AppLocalizations.of(context)!.perfil_ultimomes,
+                        style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        SizedBox(width: 50),
-                        Text("10\nEntrenamientos\ncompletados",
+                        const Spacer(flex: 1),
+                        Text(
+                            "${(DataManager().profileData?.lastMonthTrainings ?? 0)}\nEntrenamientos\ncompletados",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        Spacer(),
-                        Text("2\nEventos\nasistidos",
+                        const Spacer(flex: 2),
+                        Text(
+                            "${(DataManager().profileData?.lastMonthEvents ?? 0)}\nEventos\nasistidos",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        SizedBox(width: 50),
+                        const Spacer(flex: 1),
                       ],
                     ),
                     const SizedBox(height: 60),
-                    Text( AppLocalizations.of(context)!.perfil_avance, style: AppTypography.medium),
+                    Text(AppLocalizations.of(context)!.perfil_avance,
+                        style: AppTypography.medium),
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        const SizedBox(width: 50),
-                        Text("50 KG\nPeso",
+                        const Spacer(flex: 1),
+                        Text(
+                            "${(DataManager().profileData?.weight ?? 0)} KG\nPeso Inicial",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        const Spacer(),
-                        Text("43 KG\nPeso",
+                        const Spacer(flex: 2),
+                        Text(
+                            "${(DataManager().profileData?.newWeight ?? 0)} KG\nPeso Actual",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        const SizedBox(width: 50),
+                        const Spacer(flex: 1),
                       ],
                     ),
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        const SizedBox(width: 50),
-                        Text("30 KG\nIMC",
+                        const Spacer(flex: 1),
+                        Text(
+                            "${(DataManager().profileData?.imc ?? 0)} KG\nIMC Inicial",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        const Spacer(),
-                        Text("26 KG\nIMC",
+                        const Spacer(flex: 2),
+                        Text(
+                            "${(DataManager().profileData?.newImc ?? 0)} KG\nIMC Actual",
                             style: AppTypography.body,
                             textAlign: TextAlign.center),
-                        const SizedBox(width: 50),
+                        const Spacer(flex: 1),
                       ],
                     ),
                     const SizedBox(height: 30),
@@ -112,7 +151,8 @@ class _ProfileViewState extends State<ProfileView> {
                             borderRadius: BorderRadius.circular(12),
                             color: AppColors.grey),
                         child: Center(
-                          child: Text(AppLocalizations.of(context)!.perfil_message,
+                          child: Text(
+                              AppLocalizations.of(context)!.perfil_message,
                               style: AppTypography.medium,
                               textAlign: TextAlign.center),
                         ))
@@ -126,5 +166,13 @@ class _ProfileViewState extends State<ProfileView> {
       context,
       MaterialPageRoute(builder: (context) => LoginView()),
     );
+  }
+
+  void reloadData() async {
+    title = "Cargando ...";
+    setState(() {});
+    await DataManager().getProfileData();
+    title = "";
+    setState(() {});
   }
 }

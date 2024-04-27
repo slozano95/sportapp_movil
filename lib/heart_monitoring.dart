@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/datamanager.dart';
@@ -124,6 +123,8 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
   }
 
   void goBack() {
+    stopSession();
+    _timer?.cancel();
     Navigator.of(context).pop();
   }
 
@@ -157,6 +158,8 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
             _heartRate = value?.heartRate.toString() ?? "Loading...";
           });
         });
+      } else {
+        timer.cancel();
       }
     });
   }

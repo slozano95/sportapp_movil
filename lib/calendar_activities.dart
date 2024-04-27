@@ -41,28 +41,47 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
   List<Event> _getEventsForDay(DateTime day) {
     List<Event> events = [];
     for (var element in DataManager().allEntrenamientos) {
-      var date = DateTime.parse(element.fechaEntrenamiento ?? "");
-      if (date.year == day.year &&
-          date.month == day.month &&
-          date.day == day.day) {
-        events.add(Event(("Entrenamiento: ${element.nombre}")));
+      var fecha = element.fechaEntrenamiento ?? "";
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(("Entrenamiento: ${element.nombre}")));
+        }
+      } catch (e) {
+        print("Error parsing date 1 " + fecha);
       }
     }
-    for (var element in DataManager().allEventos) {
-      var date = DateTime.parse(element.evento?.fechaEvento ?? "");
-      if (date.year == day.year &&
-          date.month == day.month &&
-          date.day == day.day) {
-        events.add(Event(("Evento: ${element.evento?.nombre}")));
+    for (var element in DataManager()
+        .allEventos
+        .where((element) => element.evento != null)) {
+      var fecha = element.evento?.fechaEvento ?? "";
+
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(("Evento: ${element.evento?.nombre}")));
+        }
+      } catch (e) {
+        print("Error parsing date 2 " + fecha);
+        print(DataManager().allEventos);
       }
     }
     for (var element in DataManager().stravaActivities) {
-      var date = DateTime.parse(element.start_date_local ?? "");
-      if (date.year == day.year &&
-          date.month == day.month &&
-          date.day == day.day) {
-        events.add(Event(
-            ("Strava: ${element.name} (${getReadableTime(element.elapsed_time)})")));
+      var fecha = element.start_date_local ?? "";
+      try {
+        var date = DateTime.parse(fecha);
+        if (date.year == day.year &&
+            date.month == day.month &&
+            date.day == day.day) {
+          events.add(Event(
+              ("Strava: ${element.name} (${getReadableTime(element.elapsed_time)})")));
+        }
+      } catch (e) {
+        print("Error parsing date 3 " + fecha);
       }
     }
     return events;

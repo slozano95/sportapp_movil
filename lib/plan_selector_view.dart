@@ -41,7 +41,7 @@ extension PlanFeaturesExtension on PlanFeatures {
   }
 }
 
-extension PlanOptionExtension on PlanOption  { 
+extension PlanOptionExtension on PlanOption {
   String get name {
     switch (this) {
       case PlanOption.premium:
@@ -125,7 +125,9 @@ class _PlanSelectorState extends State<PlanSelector> {
                         const SizedBox(width: 12),
                         Expanded(child: planCell(PlanFeatures.events)),
                       ],
-                    )
+                    ),
+                    const SizedBox(height: 20),
+                    Center(child: Text(getAppVersion()))
                   ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
@@ -184,6 +186,10 @@ class _PlanSelectorState extends State<PlanSelector> {
             ])));
   }
 
+  String getAppVersion() {
+    return "1.0.0";
+  }
+
   void signOut() {
     Navigator.pushReplacement(
       context,
@@ -205,7 +211,7 @@ class _PlanSelectorState extends State<PlanSelector> {
     );
   }
 
-    void goToHeartMonitoring() {
+  void goToHeartMonitoring() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HeartMonitoring()),
