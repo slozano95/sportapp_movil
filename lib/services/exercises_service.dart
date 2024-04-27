@@ -19,7 +19,7 @@ class ExercisesService {
       // print(response.body);
       return data;
     } else {
-      print("Request failed with status: ${response.statusCode}");
+      print("3Request failed with status: ${response.statusCode}");
       return [];
     }
   }

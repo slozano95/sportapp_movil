@@ -7,6 +7,7 @@ import 'package:sportapp_movil/services/models/entrenamiento_api_model.dart';
 class EntrenamientoService {
   Future<List<EntrenamientosModel>> getAll() async {
     final url = '$baseUrl/entrenamientos/user/$id_user';
+    print(url);
     final response = await http.get(
       Uri.parse(url),
       headers: headers,
@@ -20,7 +21,7 @@ class EntrenamientoService {
       // print(response.body);
       return data;
     } else {
-      print("Request failed with status: ${response.statusCode}");
+      print("1Request failed with status: ${response.statusCode}");
       return [];
     }
   }

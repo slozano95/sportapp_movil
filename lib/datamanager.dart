@@ -8,7 +8,7 @@ import 'package:sportapp_movil/services/models/entrenamiento_api_model.dart';
 import 'package:sportapp_movil/services/models/eventos_api_model.dart';
 import 'package:sportapp_movil/services/models/exercises_api_model.dart';
 import 'package:sportapp_movil/services/models/simulator_api_model.dart';
-import 'package:sportapp_movil/services/models/strava_activity_api_model.dart';
+import 'package:sportapp_movil/services/models/strava_new_activity_api_model.dart';
 import 'package:sportapp_movil/services/simulator_service.dart';
 import 'package:sportapp_movil/services/strava_service.dart';
 
@@ -17,10 +17,12 @@ class DataManager {
   List<ExercisesApiModel> allExercises = [];
   List<EntrenamientosModel> allEntrenamientos = [];
   List<EventosApiModel> allEventos = [];
-  List<StravaActivityApiModel> allPendingActivities = [];
+  List<StravaNewActivityApiModel> allPendingActivities = [];
+  List<StravaNewActivityApiModel> stravaActivities = [];
   Timer? stravaTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
     sendPendingActivities();
   });
+  Timer? stravaSyncTimer;
 
   String stravaCode = "";
   String stravaToken = "";
@@ -45,10 +47,14 @@ class DataManager {
 
   void initData() async {
     getEntrenamientos();
-    getExercises();
-    getEventos();
-    await readData();
-    checkStravaToken();
+    // getExercises();
+    // // getEventos();
+    // // await readData();
+    // // checkStravaToken();
+    // // syncStravaActivites();
+    // // stravaSyncTimer = Timer.periodic(const Duration(minutes: 3), (timer) {
+    // //   syncStravaActivites();
+    // // });
   }
 
   Future<void> getExercises() async {
@@ -75,6 +81,7 @@ class DataManager {
   Future<void> getCalendarData() async {
     await getEntrenamientos();
     await getEventos();
+    await StravaService().getActivities();
   }
 
   Future<SimulatorApiModel?> getHeartRate() async {
@@ -82,22 +89,41 @@ class DataManager {
     return await service.getAll();
   }
 
-  void addPendingActivity(StravaActivityApiModel activity) {
+  void addPendingActivity(StravaNewActivityApiModel activity) {
     print("ADDING PENDING ACTIVITY ${activity.id}");
-    allPendingActivities.add(activity);
+    if (stravaCode.isNotEmpty) {
+      allPendingActivities.add(activity);
+    }
   }
 
-  static void sendPendingActivities() {
-    // print("SENDING PENDING ACTIVITIES");
+  void syncStravaActivites() {
+    print("SYNCING STRAVA ACTIVITIES");
+    if (stravaRefreshToken.isNotEmpty) {
+      StravaService().getActivities();
+    }
+  }
+
+  static void sendPendingActivities() async {
+    var shouldSync = DataManager().allPendingActivities.isNotEmpty;
+    List<StravaNewActivityApiModel> toRemove = [];
     for (var element in DataManager().allPendingActivities) {
-      StravaService().addActivity(element);
+      var result = await StravaService().addActivity(element);
+      if (result) {
+        toRemove.add(element);
+      }
+    }
+    DataManager()
+        .allPendingActivities
+        .removeWhere((element) => toRemove.contains(element));
+    if (shouldSync) {
+      StravaService().getActivities();
     }
   }
 
   void checkStravaToken() {
     DateTime now = DateTime.now();
     int epochTime = now.millisecondsSinceEpoch ~/ 1000;
-    if (epochTime > expiresAt) {
+    if (epochTime > expiresAt && stravaRefreshToken.isNotEmpty) {
       print("WILL REFRESH TOKEN");
       StravaService().getToken(true);
     }

@@ -41,7 +41,7 @@ class TrainingExercisesService {
       // print(response.body);
       return true;
     } else {
-      print("Request failed with status: ${response.statusCode}");
+      print("8Request failed with status: ${response.statusCode}");
       return false;
     }
   }

@@ -90,6 +90,10 @@ class _StravaConnectionViewState extends State<StravaConnectedView> {
 
   void disconnect() {
     DataManager().stravaCode = "";
+    DataManager().stravaToken = "";
+    DataManager().stravaRefreshToken = "";
+    DataManager().expiresAt = 0;
+    DataManager().saveData();
     Navigator.pop(context);
   }
 }
