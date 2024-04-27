@@ -17,7 +17,7 @@ class SimulatorService {
     if (response.statusCode == 200) {
       return SimulatorApiModel.fromJson(json.decode(response.body));
     } else {
-      print("Request failed with status: ${response.statusCode}");
+      print("4Request failed with status: ${response.statusCode}");
       return null;
     }
   }

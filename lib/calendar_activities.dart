@@ -56,7 +56,26 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
         events.add(Event(("Evento: ${element.evento?.nombre}")));
       }
     }
+    for (var element in DataManager().stravaActivities) {
+      var date = DateTime.parse(element.start_date_local ?? "");
+      if (date.year == day.year &&
+          date.month == day.month &&
+          date.day == day.day) {
+        events.add(Event(
+            ("Strava: ${element.name} (${getReadableTime(element.elapsed_time)})")));
+      }
+    }
     return events;
+  }
+
+  String getReadableTime(int? elapsed_time) {
+    if (elapsed_time == null) {
+      return "";
+    }
+    var hours = (elapsed_time / 3600).floor();
+    var minutes = ((elapsed_time % 3600) / 60).floor();
+    var seconds = (elapsed_time % 60);
+    return "${hours}h: ${minutes}m: ${seconds}s";
   }
 
   List<Event> _getEventsForRange(DateTime start, DateTime end) {

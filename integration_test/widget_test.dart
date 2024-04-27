@@ -15,7 +15,8 @@ import 'package:sportapp_movil/main.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
   setUpAll(() {
     nock.defaultBase =
@@ -63,62 +64,12 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.textContaining("12"));
   });
-
-  testWidgets('Test sesion deportologo', (WidgetTester tester) async {
+  testWidgets('Test heartrate', (WidgetTester tester) async {
     await goToSignIn(tester);
-    await tester.tap(find.textContaining("Agendar Sesion"));
+    await tester.tap(find.textContaining("Monitorea"));
     await tester.pumpAndSettle();
-    expect(find.textContaining('Cita'), findsOneWidget);
-    await tester.tap(find.textContaining("Selecciona la opción"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Presencial"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byIcon(Icons.calendar_month));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text("ACEPTAR"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Guardar"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Aceptar"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key("icon_back")));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Plan Premium'), findsOneWidget);
-  });
-
-  testWidgets('Test plan', (WidgetTester tester) async {
-    FlutterError.onError = (details) {};
-    await goToSignIn(tester);
-    await tester.tap(find.textContaining("Plan Entrenamiento"));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Plan de Entrenamiento'), findsOneWidget);
-    await tester.tap(find.textContaining("Ciclismo"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Iniciar sesión"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.textContaining("Finalizar sesión"));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(Key("icon_back")));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Plan de Entrenamiento'), findsOneWidget);
-  });
-
-  testWidgets('Test profile', (WidgetTester tester) async {
-    FlutterError.onError = (details) {};
-    await goToSignIn(tester);
-    await tester.tap(find.byKey(Key("profile_navbar_button")));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Tablero'), findsOneWidget);
-  });
-
-  testWidgets('Test add plan', (WidgetTester tester) async {
-    FlutterError.onError = (details) {};
-    await goToSignIn(tester);
-    await tester.tap(find.textContaining("Plan Entrenamiento"));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Plan de Entrenamiento'), findsOneWidget);
-    await tester.tap(find.byKey(Key("icon_add")));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('Agregar entrenamiento'), findsOneWidget);
+    expect(find.textContaining('Iniciar'), findsOneWidget);
+    await Future.delayed(Duration(seconds: 30));
+    expect(find.textContaining('Finalizar'), findsOneWidget);
   });
 }

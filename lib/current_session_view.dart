@@ -3,9 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/services/models/strava_new_activity_api_model.dart';
+import 'package:sportapp_movil/services/strava_service.dart';
 
 import 'UI/components.dart';
 
@@ -213,10 +216,6 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   }
 
   String getCurrentTimerValue() {
-    return getFormattedText();
-  }
-
-  String getFormattedText() {
     var milli = _stopwatch?.elapsed.inMilliseconds ?? 0;
 
     String milliseconds = (milli % 1000).toString().padLeft(3, "0");
@@ -268,6 +267,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       setState(() {
         _isSessionEnded = true;
       });
+      sendSessionData();
     } else {
       startStopwatch();
     }
@@ -324,5 +324,17 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                 ])),
           );
         });
+  }
+
+  void sendSessionData() {
+    var seconds = _stopwatch?.elapsed.inSeconds ?? 0;
+    var model = StravaNewActivityApiModel(
+        elapsed_time: seconds,
+        name: widget.title,
+        sport_type: "Run",
+        start_date_local: DateTime.now()
+            .subtract(Duration(seconds: seconds))
+            .toIso8601String());
+    DataManager().addPendingActivity(model);
   }
 }
