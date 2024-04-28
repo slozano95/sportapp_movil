@@ -4,16 +4,22 @@ import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/language_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(http.Client()));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final http.Client client;
+
+  MyApp(this.client);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyAppState createState() {
+    DataManager().setClient(this.client);
+    return _MyAppState();
+  }
 
   static _MyAppState? of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>();
