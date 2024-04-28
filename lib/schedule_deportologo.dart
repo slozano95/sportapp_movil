@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sportapp_movil/services/socios_service.dart';
 
 import 'UI/components.dart';
 
@@ -115,25 +116,18 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
     Navigator.of(context).pop();
   }
 
-  void saveSession() {
-    //SHow sucess modal
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.dep_exitoso),
-          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
-          actions: [
-            TextButton(
-              onPressed: () {
-                goBack();
-              },
-              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
-            ),
-          ],
-        );
-      },
-    );
+  void saveSession() async {
+    if (date.isEmpty || optionsTitle == "Selecciona la opción") {
+      showFieldsError();
+      return;
+    }
+    await SociosService().createCita(date, optionsTitle).then((value) {
+      if (value) {
+        showSuccessModal();
+      } else {
+        showError();
+      }
+    });
   }
 
   void openCalendar() {
@@ -181,5 +175,65 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
                 ],
               ));
         });
+  }
+
+  void showSuccessModal() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.dep_exitoso),
+          content: Text(AppLocalizations.of(context)!.dep_exitoso_desc),
+          actions: [
+            TextButton(
+              onPressed: () {
+                goBack();
+              },
+              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showError() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text("Ha ocurrido un error, por favor intenta de nuevo"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                goBack();
+              },
+              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showFieldsError() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text("Todos los campos son necesarios para continuar"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                goBack();
+              },
+              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

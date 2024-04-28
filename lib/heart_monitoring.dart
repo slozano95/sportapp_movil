@@ -138,6 +138,7 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
       _isSessionEnded = false;
       _isRunning = true;
     });
+    initTimer();
   }
 
   void stopSession() {
@@ -151,7 +152,6 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
   void initTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       if (_isRunning) {
-        print("CALLING");
         DataManager().getHeartRate().then((value) {
           jsonValue = value;
           setState(() {
