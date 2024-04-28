@@ -8,7 +8,6 @@ import 'package:sportapp_movil/services/models/entrenamiento_completado_api_mode
 class EntrenamientoService {
   Future<List<EntrenamientosModel>> getAll() async {
     final url = '$baseUrl/entrenamientos/user/$id_user';
-    print(url);
     final response = await http.get(
       Uri.parse(url),
       headers: headers,

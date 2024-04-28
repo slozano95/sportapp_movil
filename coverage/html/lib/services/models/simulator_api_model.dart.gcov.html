@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">18</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-04-27 13:35:26</td>
+            <td class="headerValue">2024-04-27 22:23:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -69,7 +69,7 @@
 <span id="L7"><span class="lineNum">       7</span>              :   String minCambio;</span>
 <span id="L8"><span class="lineNum">       8</span>              :   String minHeartrate;</span>
 <span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC tlaBgUNC">           0 :   SimulatorApiModel({</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">           2 :   SimulatorApiModel({</span></span>
 <span id="L11"><span class="lineNum">      11</span>              :     required this.heartRate,</span>
 <span id="L12"><span class="lineNum">      12</span>              :     required this.id,</span>
 <span id="L13"><span class="lineNum">      13</span>              :     required this.lastHeartRate,</span>
@@ -79,25 +79,25 @@
 <span id="L17"><span class="lineNum">      17</span>              :     required this.minHeartrate,</span>
 <span id="L18"><span class="lineNum">      18</span>              :   });</span>
 <span id="L19"><span class="lineNum">      19</span>              : </span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :   factory SimulatorApiModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :       SimulatorApiModel(</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :         heartRate: json[&quot;heart_rate&quot;],</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :         id: json[&quot;id&quot;],</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :         lastHeartRate: json[&quot;last_heart_rate&quot;],</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :         maxCambio: json[&quot;max_cambio&quot;],</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :         maxHeartrate: json[&quot;max_heartrate&quot;],</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :         minCambio: json[&quot;min_cambio&quot;],</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :         minHeartrate: json[&quot;min_heartrate&quot;],</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :   factory SimulatorApiModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :       SimulatorApiModel(</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :         heartRate: json[&quot;heart_rate&quot;],</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :         id: json[&quot;id&quot;],</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :         lastHeartRate: json[&quot;last_heart_rate&quot;],</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :         maxCambio: json[&quot;max_cambio&quot;],</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :         maxHeartrate: json[&quot;max_heartrate&quot;],</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :         minCambio: json[&quot;min_cambio&quot;],</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           1 :         minHeartrate: json[&quot;min_heartrate&quot;],</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :       );</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         &quot;heart_rate&quot;: heartRate,</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         &quot;id&quot;: id,</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :         &quot;last_heart_rate&quot;: lastHeartRate,</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         &quot;max_cambio&quot;: maxCambio,</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :         &quot;max_heartrate&quot;: maxHeartrate,</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :         &quot;min_cambio&quot;: minCambio,</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         &quot;min_heartrate&quot;: minHeartrate,</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :         &quot;heart_rate&quot;: heartRate,</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :         &quot;id&quot;: id,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           1 :         &quot;last_heart_rate&quot;: lastHeartRate,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :         &quot;max_cambio&quot;: maxCambio,</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :         &quot;max_heartrate&quot;: maxHeartrate,</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :         &quot;min_cambio&quot;: minCambio,</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :         &quot;min_heartrate&quot;: minHeartrate,</span></span>
 <span id="L39"><span class="lineNum">      39</span>              :       };</span>
 <span id="L40"><span class="lineNum">      40</span>              : }</span>
         </pre>

@@ -198,23 +198,25 @@ class _ScheduleDeportologoState extends State<ScheduleDeportologo> {
   }
 
   void showError() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Error"),
-          content: Text("Ha ocurrido un error, por favor intenta de nuevo"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                goBack();
-              },
-              child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
-            ),
-          ],
-        );
-      },
-    );
+    if (mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Error"),
+            content: Text("Ha ocurrido un error, por favor intenta de nuevo"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  goBack();
+                },
+                child: Text(AppLocalizations.of(context)!.dep_exitoso_Aceptar),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void showFieldsError() {

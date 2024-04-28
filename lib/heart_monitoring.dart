@@ -154,9 +154,11 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
       if (_isRunning) {
         DataManager().getHeartRate().then((value) {
           jsonValue = value;
-          setState(() {
-            _heartRate = value?.heartRate.toString() ?? "Loading...";
-          });
+          if (mounted) {
+            setState(() {
+              _heartRate = value?.heartRate.toString() ?? "Loading...";
+            });
+          }
         });
       } else {
         timer.cancel();

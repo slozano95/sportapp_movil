@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">68.7&nbsp;%</td>
+            <td class="headerCovTableEntryMed">87.9&nbsp;%</td>
             <td class="headerCovTableEntry">99</td>
-            <td class="headerCovTableEntry">68</td>
+            <td class="headerCovTableEntry">87</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-04-27 13:35:26</td>
+            <td class="headerValue">2024-04-27 22:23:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -202,22 +202,22 @@
 <span id="L140"><span class="lineNum">     140</span>              : </span>
 <span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">           1 :   Widget planCell(PlanFeatures planFeature) {</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           1 :     return GestureDetector(</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC tlaBgUNC">           0 :         onTap: () {</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">           1 :         onTap: () {</span></span>
 <span id="L144"><span class="lineNum">     144</span>              :           switch (planFeature) {</span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaUNC">           0 :             case PlanFeatures.scheduleSession:</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaUNC">           0 :               goToScheduleDeportologo();</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :             case PlanFeatures.scheduleSession:</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :               goToScheduleDeportologo();</span></span>
 <span id="L147"><span class="lineNum">     147</span>              :               break;</span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaUNC">           0 :             case PlanFeatures.trainingPlan:</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaUNC">           0 :               goToTrainingPlan();</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           1 :             case PlanFeatures.trainingPlan:</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           1 :               goToTrainingPlan();</span></span>
 <span id="L150"><span class="lineNum">     150</span>              :               break;</span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC">           0 :             case PlanFeatures.heartRate:</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaUNC">           0 :               goToHeartMonitoring();</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           1 :             case PlanFeatures.heartRate:</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           1 :               goToHeartMonitoring();</span></span>
 <span id="L153"><span class="lineNum">     153</span>              :               break;</span>
 <span id="L154"><span class="lineNum">     154</span>              :             default:</span>
 <span id="L155"><span class="lineNum">     155</span>              :               break;</span>
 <span id="L156"><span class="lineNum">     156</span>              :           }</span>
 <span id="L157"><span class="lineNum">     157</span>              :         },</span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC tlaBgGNC">           1 :         child: Container(</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           1 :         child: Container(</span></span>
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           1 :             padding: EdgeInsets.all(12),</span></span>
 <span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :             decoration: BoxDecoration(</span></span>
 <span id="L161"><span class="lineNum">     161</span>              :                 color: AppColors.white,</span>
@@ -264,24 +264,24 @@
 <span id="L202"><span class="lineNum">     202</span>              :     );</span>
 <span id="L203"><span class="lineNum">     203</span>              :   }</span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaUNC">           0 :   void goToScheduleDeportologo() {</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaUNC">           0 :     Navigator.push(</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaUNC">           0 :       context,</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaUNC">           0 :       MaterialPageRoute(builder: (context) =&gt; ScheduleDeportologo()),</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC tlaBgGNC">           1 :   void goToScheduleDeportologo() {</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           1 :     Navigator.push(</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :       context,</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           3 :       MaterialPageRoute(builder: (context) =&gt; ScheduleDeportologo()),</span></span>
 <span id="L209"><span class="lineNum">     209</span>              :     );</span>
 <span id="L210"><span class="lineNum">     210</span>              :   }</span>
 <span id="L211"><span class="lineNum">     211</span>              : </span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaUNC">           0 :   void goToTrainingPlan() {</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaUNC">           0 :     Navigator.push(</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaUNC">           0 :       context,</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC">           0 :       MaterialPageRoute(builder: (context) =&gt; TrainingPlanView()),</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           1 :   void goToTrainingPlan() {</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           1 :     Navigator.push(</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :       context,</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">           3 :       MaterialPageRoute(builder: (context) =&gt; TrainingPlanView()),</span></span>
 <span id="L216"><span class="lineNum">     216</span>              :     );</span>
 <span id="L217"><span class="lineNum">     217</span>              :   }</span>
 <span id="L218"><span class="lineNum">     218</span>              : </span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :   void goToHeartMonitoring() {</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :     Navigator.push(</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaUNC">           0 :       context,</span></span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC">           0 :       MaterialPageRoute(builder: (context) =&gt; HeartMonitoring()),</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           1 :   void goToHeartMonitoring() {</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           1 :     Navigator.push(</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           1 :       context,</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           3 :       MaterialPageRoute(builder: (context) =&gt; HeartMonitoring()),</span></span>
 <span id="L223"><span class="lineNum">     223</span>              :     );</span>
 <span id="L224"><span class="lineNum">     224</span>              :   }</span>
 <span id="L225"><span class="lineNum">     225</span>              : }</span>

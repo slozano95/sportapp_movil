@@ -41,10 +41,11 @@ class UIComponents {
                         fontWeight: FontWeight.w700)))));
   }
 
-  static Widget step(String title, VoidCallback onPressed) {
+  static Widget step(String title, String key, VoidCallback onPressed) {
     return GestureDetector(
         onTap: onPressed,
         child: Container(
+            key: Key(key),
             width: 30,
             height: 30,
             decoration: BoxDecoration(

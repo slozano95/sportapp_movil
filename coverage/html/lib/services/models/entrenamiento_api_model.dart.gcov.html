@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">94.1&nbsp;%</td>
             <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">32</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-04-27 13:35:26</td>
+            <td class="headerValue">2024-04-27 22:23:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -68,7 +68,7 @@
 <span id="L6"><span class="lineNum">       6</span>              :   String? idUsuario;</span>
 <span id="L7"><span class="lineNum">       7</span>              :   String? nombre;</span>
 <span id="L8"><span class="lineNum">       8</span>              : </span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC tlaBgUNC">           0 :   EntrenamientosModel({</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">           2 :   EntrenamientosModel({</span></span>
 <span id="L10"><span class="lineNum">      10</span>              :     this.ejercicios,</span>
 <span id="L11"><span class="lineNum">      11</span>              :     this.estado,</span>
 <span id="L12"><span class="lineNum">      12</span>              :     this.fechaEntrenamiento,</span>
@@ -77,28 +77,28 @@
 <span id="L15"><span class="lineNum">      15</span>              :     this.nombre,</span>
 <span id="L16"><span class="lineNum">      16</span>              :   });</span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :   factory EntrenamientosModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :       EntrenamientosModel(</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :         ejercicios: json[&quot;ejercicios&quot;] == null</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :             : List&lt;Ejercicio&gt;.from(</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :                 json[&quot;ejercicios&quot;]!.map((x) =&gt; Ejercicio.fromJson(x))),</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :         estado: json[&quot;estado&quot;],</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :         fechaEntrenamiento: json[&quot;fecha_entrenamiento&quot;],</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :         idEntrenamiento: json[&quot;id_entrenamiento&quot;],</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :         idUsuario: json[&quot;id_usuario&quot;],</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :         nombre: json[&quot;nombre&quot;],</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :   factory EntrenamientosModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :       EntrenamientosModel(</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :         ejercicios: json[&quot;ejercicios&quot;] == null</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC tlaBgUNC">           0 :             ? []</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">           1 :             : List&lt;Ejercicio&gt;.from(</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           4 :                 json[&quot;ejercicios&quot;]!.map((x) =&gt; Ejercicio.fromJson(x))),</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :         estado: json[&quot;estado&quot;],</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :         fechaEntrenamiento: json[&quot;fecha_entrenamiento&quot;],</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :         idEntrenamiento: json[&quot;id_entrenamiento&quot;],</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :         idUsuario: json[&quot;id_usuario&quot;],</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           1 :         nombre: json[&quot;nombre&quot;],</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :       );</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         &quot;ejercicios&quot;: ejercicios == null</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :             : List&lt;dynamic&gt;.from(ejercicios!.map((x) =&gt; x.toJson())),</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :         &quot;estado&quot;: estado,</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :         &quot;fecha_entrenamiento&quot;: fechaEntrenamiento,</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :         &quot;id_entrenamiento&quot;: idEntrenamiento,</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         &quot;id_usuario&quot;: idUsuario,</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :         &quot;nombre&quot;: nombre,</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :         &quot;ejercicios&quot;: ejercicios == null</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :             ? []</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC tlaBgUNC">           0 :             : List&lt;dynamic&gt;.from(ejercicios!.map((x) =&gt; x.toJson())),</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC tlaBgGNC">           1 :         &quot;estado&quot;: estado,</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :         &quot;fecha_entrenamiento&quot;: fechaEntrenamiento,</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :         &quot;id_entrenamiento&quot;: idEntrenamiento,</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :         &quot;id_usuario&quot;: idUsuario,</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           1 :         &quot;nombre&quot;: nombre,</span></span>
 <span id="L40"><span class="lineNum">      40</span>              :       };</span>
 <span id="L41"><span class="lineNum">      41</span>              : }</span>
 <span id="L42"><span class="lineNum">      42</span>              : </span>
@@ -109,7 +109,7 @@
 <span id="L47"><span class="lineNum">      47</span>              :   int? numeroRepeticiones;</span>
 <span id="L48"><span class="lineNum">      48</span>              :   String? urlImagen;</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :   Ejercicio({</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           2 :   Ejercicio({</span></span>
 <span id="L51"><span class="lineNum">      51</span>              :     this.estado,</span>
 <span id="L52"><span class="lineNum">      52</span>              :     this.idEjercicio,</span>
 <span id="L53"><span class="lineNum">      53</span>              :     this.nombre,</span>
@@ -117,20 +117,20 @@
 <span id="L55"><span class="lineNum">      55</span>              :     this.urlImagen,</span>
 <span id="L56"><span class="lineNum">      56</span>              :   });</span>
 <span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 :   factory Ejercicio.fromJson(Map&lt;String, dynamic&gt; json) =&gt; Ejercicio(</span></span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC">           0 :         estado: json[&quot;estado&quot;],</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :         idEjercicio: json[&quot;id_ejercicio&quot;],</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :         nombre: json[&quot;nombre&quot;],</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :         numeroRepeticiones: json[&quot;numero_repeticiones&quot;],</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :         urlImagen: json[&quot;url_imagen&quot;],</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           2 :   factory Ejercicio.fromJson(Map&lt;String, dynamic&gt; json) =&gt; Ejercicio(</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           1 :         estado: json[&quot;estado&quot;],</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           1 :         idEjercicio: json[&quot;id_ejercicio&quot;],</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           1 :         nombre: json[&quot;nombre&quot;],</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           1 :         numeroRepeticiones: json[&quot;numero_repeticiones&quot;],</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">           1 :         urlImagen: json[&quot;url_imagen&quot;],</span></span>
 <span id="L64"><span class="lineNum">      64</span>              :       );</span>
 <span id="L65"><span class="lineNum">      65</span>              : </span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 :         &quot;estado&quot;: estado,</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         &quot;id_ejercicio&quot;: idEjercicio,</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :         &quot;nombre&quot;: nombre,</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 :         &quot;numero_repeticiones&quot;: numeroRepeticiones,</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaUNC">           0 :         &quot;url_imagen&quot;: urlImagen,</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           1 :         &quot;estado&quot;: estado,</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">           1 :         &quot;id_ejercicio&quot;: idEjercicio,</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">           1 :         &quot;nombre&quot;: nombre,</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">           1 :         &quot;numero_repeticiones&quot;: numeroRepeticiones,</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">           1 :         &quot;url_imagen&quot;: urlImagen,</span></span>
 <span id="L72"><span class="lineNum">      72</span>              :       };</span>
 <span id="L73"><span class="lineNum">      73</span>              : }</span>
         </pre>
