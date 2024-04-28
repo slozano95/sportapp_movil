@@ -1,6 +1,6 @@
 class StravaActivityApiModel {
   int? resourceState;
-  Athlete? athlete;
+  AAthlete? athlete;
   String? name;
   int? distance;
   int? movingTime;
@@ -95,7 +95,7 @@ class StravaActivityApiModel {
       StravaActivityApiModel(
         resourceState: json["resource_state"],
         athlete:
-            json["athlete"] == null ? null : Athlete.fromJson(json["athlete"]),
+            json["athlete"] == null ? null : AAthlete.fromJson(json["athlete"]),
         name: json["name"],
         distance: json["distance"],
         movingTime: json["moving_time"],
@@ -200,16 +200,16 @@ class StravaActivityApiModel {
       };
 }
 
-class Athlete {
+class AAthlete {
   int? id;
   int? resourceState;
 
-  Athlete({
+  AAthlete({
     this.id,
     this.resourceState,
   });
 
-  factory Athlete.fromJson(Map<String, dynamic> json) => Athlete(
+  factory AAthlete.fromJson(Map<String, dynamic> json) => AAthlete(
         id: json["id"],
         resourceState: json["resource_state"],
       );

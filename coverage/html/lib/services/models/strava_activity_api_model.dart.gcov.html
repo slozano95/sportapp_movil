@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">94.9&nbsp;%</td>
             <td class="headerCovTableEntry">118</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">112</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-04-25 20:43:59</td>
+            <td class="headerValue">2024-04-27 22:23:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -62,7 +62,7 @@
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : class StravaActivityApiModel {</span>
 <span id="L2"><span class="lineNum">       2</span>              :   int? resourceState;</span>
-<span id="L3"><span class="lineNum">       3</span>              :   Athlete? athlete;</span>
+<span id="L3"><span class="lineNum">       3</span>              :   AAthlete? athlete;</span>
 <span id="L4"><span class="lineNum">       4</span>              :   String? name;</span>
 <span id="L5"><span class="lineNum">       5</span>              :   int? distance;</span>
 <span id="L6"><span class="lineNum">       6</span>              :   int? movingTime;</span>
@@ -106,7 +106,7 @@
 <span id="L44"><span class="lineNum">      44</span>              :   int? totalPhotoCount;</span>
 <span id="L45"><span class="lineNum">      45</span>              :   bool? hasKudoed;</span>
 <span id="L46"><span class="lineNum">      46</span>              : </span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC tlaBgUNC">           0 :   StravaActivityApiModel({</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC tlaBgGNC">           1 :   StravaActivityApiModel({</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :     this.resourceState,</span>
 <span id="L49"><span class="lineNum">      49</span>              :     this.athlete,</span>
 <span id="L50"><span class="lineNum">      50</span>              :     this.name,</span>
@@ -153,132 +153,132 @@
 <span id="L91"><span class="lineNum">      91</span>              :     this.hasKudoed,</span>
 <span id="L92"><span class="lineNum">      92</span>              :   });</span>
 <span id="L93"><span class="lineNum">      93</span>              : </span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaUNC">           0 :   factory StravaActivityApiModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaUNC">           0 :       StravaActivityApiModel(</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaUNC">           0 :         resourceState: json[&quot;resource_state&quot;],</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">           1 :   factory StravaActivityApiModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt;</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">           1 :       StravaActivityApiModel(</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">           1 :         resourceState: json[&quot;resource_state&quot;],</span></span>
 <span id="L97"><span class="lineNum">      97</span>              :         athlete:</span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :             json[&quot;athlete&quot;] == null ? null : Athlete.fromJson(json[&quot;athlete&quot;]),</span></span>
-<span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :         name: json[&quot;name&quot;],</span></span>
-<span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC">           0 :         distance: json[&quot;distance&quot;],</span></span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaUNC">           0 :         movingTime: json[&quot;moving_time&quot;],</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaUNC">           0 :         elapsedTime: json[&quot;elapsed_time&quot;],</span></span>
-<span id="L103"><span class="lineNum">     103</span> <span class="tlaUNC">           0 :         totalElevationGain: json[&quot;total_elevation_gain&quot;],</span></span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaUNC">           0 :         type: json[&quot;type&quot;],</span></span>
-<span id="L105"><span class="lineNum">     105</span> <span class="tlaUNC">           0 :         sportType: json[&quot;sport_type&quot;],</span></span>
-<span id="L106"><span class="lineNum">     106</span> <span class="tlaUNC">           0 :         workoutType: json[&quot;workout_type&quot;],</span></span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaUNC">           0 :         id: json[&quot;id&quot;],</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaUNC">           0 :         startDate: json[&quot;start_date&quot;] == null</span></span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">           1 :             json[&quot;athlete&quot;] == null ? null : AAthlete.fromJson(json[&quot;athlete&quot;]),</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">           1 :         name: json[&quot;name&quot;],</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">           1 :         distance: json[&quot;distance&quot;],</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">           1 :         movingTime: json[&quot;moving_time&quot;],</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">           1 :         elapsedTime: json[&quot;elapsed_time&quot;],</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">           1 :         totalElevationGain: json[&quot;total_elevation_gain&quot;],</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">           1 :         type: json[&quot;type&quot;],</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">           1 :         sportType: json[&quot;sport_type&quot;],</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">           1 :         workoutType: json[&quot;workout_type&quot;],</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">           1 :         id: json[&quot;id&quot;],</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           1 :         startDate: json[&quot;start_date&quot;] == null</span></span>
 <span id="L109"><span class="lineNum">     109</span>              :             ? null</span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaUNC">           0 :             : DateTime.parse(json[&quot;start_date&quot;]),</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaUNC">           0 :         startDateLocal: json[&quot;start_date_local&quot;] == null</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaUNC tlaBgUNC">           0 :             : DateTime.parse(json[&quot;start_date&quot;]),</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC tlaBgGNC">           1 :         startDateLocal: json[&quot;start_date_local&quot;] == null</span></span>
 <span id="L112"><span class="lineNum">     112</span>              :             ? null</span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC">           0 :             : DateTime.parse(json[&quot;start_date_local&quot;]),</span></span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaUNC">           0 :         timezone: json[&quot;timezone&quot;],</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaUNC">           0 :         utcOffset: json[&quot;utc_offset&quot;],</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 :         locationCity: json[&quot;location_city&quot;],</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC">           0 :         locationState: json[&quot;location_state&quot;],</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaUNC">           0 :         locationCountry: json[&quot;location_country&quot;],</span></span>
-<span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC">           0 :         achievementCount: json[&quot;achievement_count&quot;],</span></span>
-<span id="L120"><span class="lineNum">     120</span> <span class="tlaUNC">           0 :         kudosCount: json[&quot;kudos_count&quot;],</span></span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :         commentCount: json[&quot;comment_count&quot;],</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaUNC">           0 :         athleteCount: json[&quot;athlete_count&quot;],</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaUNC">           0 :         photoCount: json[&quot;photo_count&quot;],</span></span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaUNC">           0 :         map: json[&quot;map&quot;] == null ? null : MapClass.fromJson(json[&quot;map&quot;]),</span></span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaUNC">           0 :         trainer: json[&quot;trainer&quot;],</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaUNC">           0 :         commute: json[&quot;commute&quot;],</span></span>
-<span id="L127"><span class="lineNum">     127</span> <span class="tlaUNC">           0 :         manual: json[&quot;manual&quot;],</span></span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaUNC">           0 :         private: json[&quot;private&quot;],</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :         visibility: json[&quot;visibility&quot;],</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :         flagged: json[&quot;flagged&quot;],</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :         gearId: json[&quot;gear_id&quot;],</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :         startLatlng: json[&quot;start_latlng&quot;] == null</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :             : List&lt;dynamic&gt;.from(json[&quot;start_latlng&quot;]!.map((x) =&gt; x)),</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :         endLatlng: json[&quot;end_latlng&quot;] == null</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC">           0 :             : List&lt;dynamic&gt;.from(json[&quot;end_latlng&quot;]!.map((x) =&gt; x)),</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC">           0 :         averageSpeed: json[&quot;average_speed&quot;]?.toDouble(),</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :         maxSpeed: json[&quot;max_speed&quot;],</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 :         hasHeartrate: json[&quot;has_heartrate&quot;],</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :         heartrateOptOut: json[&quot;heartrate_opt_out&quot;],</span></span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaUNC">           0 :         displayHideHeartrateOption: json[&quot;display_hide_heartrate_option&quot;],</span></span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC">           0 :         uploadId: json[&quot;upload_id&quot;],</span></span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaUNC">           0 :         externalId: json[&quot;external_id&quot;],</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaUNC">           0 :         fromAcceptedTag: json[&quot;from_accepted_tag&quot;],</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaUNC">           0 :         prCount: json[&quot;pr_count&quot;],</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaUNC">           0 :         totalPhotoCount: json[&quot;total_photo_count&quot;],</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaUNC">           0 :         hasKudoed: json[&quot;has_kudoed&quot;],</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC tlaBgUNC">           0 :             : DateTime.parse(json[&quot;start_date_local&quot;]),</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC tlaBgGNC">           1 :         timezone: json[&quot;timezone&quot;],</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           1 :         utcOffset: json[&quot;utc_offset&quot;],</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           1 :         locationCity: json[&quot;location_city&quot;],</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">           1 :         locationState: json[&quot;location_state&quot;],</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">           1 :         locationCountry: json[&quot;location_country&quot;],</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">           1 :         achievementCount: json[&quot;achievement_count&quot;],</span></span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">           1 :         kudosCount: json[&quot;kudos_count&quot;],</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">           1 :         commentCount: json[&quot;comment_count&quot;],</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">           1 :         athleteCount: json[&quot;athlete_count&quot;],</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           1 :         photoCount: json[&quot;photo_count&quot;],</span></span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaGNC">           1 :         map: json[&quot;map&quot;] == null ? null : MapClass.fromJson(json[&quot;map&quot;]),</span></span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">           1 :         trainer: json[&quot;trainer&quot;],</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">           1 :         commute: json[&quot;commute&quot;],</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">           1 :         manual: json[&quot;manual&quot;],</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">           1 :         private: json[&quot;private&quot;],</span></span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaGNC">           1 :         visibility: json[&quot;visibility&quot;],</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC">           1 :         flagged: json[&quot;flagged&quot;],</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">           1 :         gearId: json[&quot;gear_id&quot;],</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">           1 :         startLatlng: json[&quot;start_latlng&quot;] == null</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaGNC">           1 :             ? []</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC tlaBgUNC">           0 :             : List&lt;dynamic&gt;.from(json[&quot;start_latlng&quot;]!.map((x) =&gt; x)),</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC tlaBgGNC">           1 :         endLatlng: json[&quot;end_latlng&quot;] == null</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">           1 :             ? []</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC tlaBgUNC">           0 :             : List&lt;dynamic&gt;.from(json[&quot;end_latlng&quot;]!.map((x) =&gt; x)),</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC tlaBgGNC">           1 :         averageSpeed: json[&quot;average_speed&quot;]?.toDouble(),</span></span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC">           1 :         maxSpeed: json[&quot;max_speed&quot;],</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">           1 :         hasHeartrate: json[&quot;has_heartrate&quot;],</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">           1 :         heartrateOptOut: json[&quot;heartrate_opt_out&quot;],</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           1 :         displayHideHeartrateOption: json[&quot;display_hide_heartrate_option&quot;],</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">           1 :         uploadId: json[&quot;upload_id&quot;],</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">           1 :         externalId: json[&quot;external_id&quot;],</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :         fromAcceptedTag: json[&quot;from_accepted_tag&quot;],</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :         prCount: json[&quot;pr_count&quot;],</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           1 :         totalPhotoCount: json[&quot;total_photo_count&quot;],</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           1 :         hasKudoed: json[&quot;has_kudoed&quot;],</span></span>
 <span id="L149"><span class="lineNum">     149</span>              :       );</span>
 <span id="L150"><span class="lineNum">     150</span>              : </span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaUNC">           0 :         &quot;resource_state&quot;: resourceState,</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaUNC">           0 :         &quot;athlete&quot;: athlete?.toJson(),</span></span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaUNC">           0 :         &quot;name&quot;: name,</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaUNC">           0 :         &quot;distance&quot;: distance,</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaUNC">           0 :         &quot;moving_time&quot;: movingTime,</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaUNC">           0 :         &quot;elapsed_time&quot;: elapsedTime,</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaUNC">           0 :         &quot;total_elevation_gain&quot;: totalElevationGain,</span></span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaUNC">           0 :         &quot;type&quot;: type,</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaUNC">           0 :         &quot;sport_type&quot;: sportType,</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :         &quot;workout_type&quot;: workoutType,</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :         &quot;id&quot;: id,</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :         &quot;start_date&quot;: startDate?.toIso8601String(),</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :         &quot;start_date_local&quot;: startDateLocal?.toIso8601String(),</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :         &quot;timezone&quot;: timezone,</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :         &quot;utc_offset&quot;: utcOffset,</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaUNC">           0 :         &quot;location_city&quot;: locationCity,</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC">           0 :         &quot;location_state&quot;: locationState,</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 :         &quot;location_country&quot;: locationCountry,</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :         &quot;achievement_count&quot;: achievementCount,</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC">           0 :         &quot;kudos_count&quot;: kudosCount,</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :         &quot;comment_count&quot;: commentCount,</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC">           0 :         &quot;athlete_count&quot;: athleteCount,</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaUNC">           0 :         &quot;photo_count&quot;: photoCount,</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaUNC">           0 :         &quot;map&quot;: map?.toJson(),</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :         &quot;trainer&quot;: trainer,</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaUNC">           0 :         &quot;commute&quot;: commute,</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :         &quot;manual&quot;: manual,</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaUNC">           0 :         &quot;private&quot;: private,</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaUNC">           0 :         &quot;visibility&quot;: visibility,</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaUNC">           0 :         &quot;flagged&quot;: flagged,</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaUNC">           0 :         &quot;gear_id&quot;: gearId,</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC">           0 :         &quot;start_latlng&quot;: startLatlng == null</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC">           0 :             : List&lt;dynamic&gt;.from(startLatlng!.map((x) =&gt; x)),</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaUNC">           0 :         &quot;end_latlng&quot;: endLatlng == null</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaUNC">           0 :             ? []</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC">           0 :             : List&lt;dynamic&gt;.from(endLatlng!.map((x) =&gt; x)),</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC">           0 :         &quot;average_speed&quot;: averageSpeed,</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :         &quot;max_speed&quot;: maxSpeed,</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaUNC">           0 :         &quot;has_heartrate&quot;: hasHeartrate,</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaUNC">           0 :         &quot;heartrate_opt_out&quot;: heartrateOptOut,</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :         &quot;display_hide_heartrate_option&quot;: displayHideHeartrateOption,</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaUNC">           0 :         &quot;upload_id&quot;: uploadId,</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaUNC">           0 :         &quot;external_id&quot;: externalId,</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC">           0 :         &quot;from_accepted_tag&quot;: fromAcceptedTag,</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :         &quot;pr_count&quot;: prCount,</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC">           0 :         &quot;total_photo_count&quot;: totalPhotoCount,</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC">           0 :         &quot;has_kudoed&quot;: hasKudoed,</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           1 :         &quot;resource_state&quot;: resourceState,</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           1 :         &quot;athlete&quot;: athlete?.toJson(),</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           1 :         &quot;name&quot;: name,</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           1 :         &quot;distance&quot;: distance,</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           1 :         &quot;moving_time&quot;: movingTime,</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           1 :         &quot;elapsed_time&quot;: elapsedTime,</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           1 :         &quot;total_elevation_gain&quot;: totalElevationGain,</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           1 :         &quot;type&quot;: type,</span></span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :         &quot;sport_type&quot;: sportType,</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           1 :         &quot;workout_type&quot;: workoutType,</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           1 :         &quot;id&quot;: id,</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           1 :         &quot;start_date&quot;: startDate?.toIso8601String(),</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           1 :         &quot;start_date_local&quot;: startDateLocal?.toIso8601String(),</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           1 :         &quot;timezone&quot;: timezone,</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :         &quot;utc_offset&quot;: utcOffset,</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           1 :         &quot;location_city&quot;: locationCity,</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :         &quot;location_state&quot;: locationState,</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :         &quot;location_country&quot;: locationCountry,</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           1 :         &quot;achievement_count&quot;: achievementCount,</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           1 :         &quot;kudos_count&quot;: kudosCount,</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           1 :         &quot;comment_count&quot;: commentCount,</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :         &quot;athlete_count&quot;: athleteCount,</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           1 :         &quot;photo_count&quot;: photoCount,</span></span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           1 :         &quot;map&quot;: map?.toJson(),</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :         &quot;trainer&quot;: trainer,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :         &quot;commute&quot;: commute,</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :         &quot;manual&quot;: manual,</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           1 :         &quot;private&quot;: private,</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           1 :         &quot;visibility&quot;: visibility,</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :         &quot;flagged&quot;: flagged,</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :         &quot;gear_id&quot;: gearId,</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           1 :         &quot;start_latlng&quot;: startLatlng == null</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC tlaBgUNC">           0 :             ? []</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC tlaBgGNC">           3 :             : List&lt;dynamic&gt;.from(startLatlng!.map((x) =&gt; x)),</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">           1 :         &quot;end_latlng&quot;: endLatlng == null</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaUNC tlaBgUNC">           0 :             ? []</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">           3 :             : List&lt;dynamic&gt;.from(endLatlng!.map((x) =&gt; x)),</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           1 :         &quot;average_speed&quot;: averageSpeed,</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           1 :         &quot;max_speed&quot;: maxSpeed,</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           1 :         &quot;has_heartrate&quot;: hasHeartrate,</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           1 :         &quot;heartrate_opt_out&quot;: heartrateOptOut,</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           1 :         &quot;display_hide_heartrate_option&quot;: displayHideHeartrateOption,</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           1 :         &quot;upload_id&quot;: uploadId,</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           1 :         &quot;external_id&quot;: externalId,</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           1 :         &quot;from_accepted_tag&quot;: fromAcceptedTag,</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           1 :         &quot;pr_count&quot;: prCount,</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">           1 :         &quot;total_photo_count&quot;: totalPhotoCount,</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           1 :         &quot;has_kudoed&quot;: hasKudoed,</span></span>
 <span id="L200"><span class="lineNum">     200</span>              :       };</span>
 <span id="L201"><span class="lineNum">     201</span>              : }</span>
 <span id="L202"><span class="lineNum">     202</span>              : </span>
-<span id="L203"><span class="lineNum">     203</span>              : class Athlete {</span>
+<span id="L203"><span class="lineNum">     203</span>              : class AAthlete {</span>
 <span id="L204"><span class="lineNum">     204</span>              :   int? id;</span>
 <span id="L205"><span class="lineNum">     205</span>              :   int? resourceState;</span>
 <span id="L206"><span class="lineNum">     206</span>              : </span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaUNC">           0 :   Athlete({</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :   AAthlete({</span></span>
 <span id="L208"><span class="lineNum">     208</span>              :     this.id,</span>
 <span id="L209"><span class="lineNum">     209</span>              :     this.resourceState,</span>
 <span id="L210"><span class="lineNum">     210</span>              :   });</span>
 <span id="L211"><span class="lineNum">     211</span>              : </span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaUNC">           0 :   factory Athlete.fromJson(Map&lt;String, dynamic&gt; json) =&gt; Athlete(</span></span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaUNC">           0 :         id: json[&quot;id&quot;],</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaUNC">           0 :         resourceState: json[&quot;resource_state&quot;],</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           2 :   factory AAthlete.fromJson(Map&lt;String, dynamic&gt; json) =&gt; AAthlete(</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           1 :         id: json[&quot;id&quot;],</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :         resourceState: json[&quot;resource_state&quot;],</span></span>
 <span id="L215"><span class="lineNum">     215</span>              :       );</span>
 <span id="L216"><span class="lineNum">     216</span>              : </span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC">           0 :         &quot;id&quot;: id,</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :         &quot;resource_state&quot;: resourceState,</span></span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           1 :         &quot;id&quot;: id,</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           1 :         &quot;resource_state&quot;: resourceState,</span></span>
 <span id="L220"><span class="lineNum">     220</span>              :       };</span>
 <span id="L221"><span class="lineNum">     221</span>              : }</span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
@@ -287,22 +287,22 @@
 <span id="L225"><span class="lineNum">     225</span>              :   String? summaryPolyline;</span>
 <span id="L226"><span class="lineNum">     226</span>              :   int? resourceState;</span>
 <span id="L227"><span class="lineNum">     227</span>              : </span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :   MapClass({</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           1 :   MapClass({</span></span>
 <span id="L229"><span class="lineNum">     229</span>              :     this.id,</span>
 <span id="L230"><span class="lineNum">     230</span>              :     this.summaryPolyline,</span>
 <span id="L231"><span class="lineNum">     231</span>              :     this.resourceState,</span>
 <span id="L232"><span class="lineNum">     232</span>              :   });</span>
 <span id="L233"><span class="lineNum">     233</span>              : </span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaUNC">           0 :   factory MapClass.fromJson(Map&lt;String, dynamic&gt; json) =&gt; MapClass(</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :         id: json[&quot;id&quot;],</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :         summaryPolyline: json[&quot;summary_polyline&quot;],</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :         resourceState: json[&quot;resource_state&quot;],</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           2 :   factory MapClass.fromJson(Map&lt;String, dynamic&gt; json) =&gt; MapClass(</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           1 :         id: json[&quot;id&quot;],</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           1 :         summaryPolyline: json[&quot;summary_polyline&quot;],</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           1 :         resourceState: json[&quot;resource_state&quot;],</span></span>
 <span id="L238"><span class="lineNum">     238</span>              :       );</span>
 <span id="L239"><span class="lineNum">     239</span>              : </span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaUNC">           0 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :         &quot;id&quot;: id,</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 :         &quot;summary_polyline&quot;: summaryPolyline,</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :         &quot;resource_state&quot;: resourceState,</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           2 :   Map&lt;String, dynamic&gt; toJson() =&gt; {</span></span>
+<span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           1 :         &quot;id&quot;: id,</span></span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           1 :         &quot;summary_polyline&quot;: summaryPolyline,</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           1 :         &quot;resource_state&quot;: resourceState,</span></span>
 <span id="L244"><span class="lineNum">     244</span>              :       };</span>
 <span id="L245"><span class="lineNum">     245</span>              : }</span>
         </pre>

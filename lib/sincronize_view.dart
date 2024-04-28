@@ -57,8 +57,11 @@ class _SincronizeViewState extends State<SincronizeView> {
                             onTap: () {
                               goToStravaConnect();
                             },
-                            child: Image.asset("assets/logo_strava.png",
-                                width: 90))
+                            child: Image.asset(
+                              "assets/logo_strava.png",
+                              width: 90,
+                              key: Key("strava_logo"),
+                            ))
                       ],
                     )
                   ])))),

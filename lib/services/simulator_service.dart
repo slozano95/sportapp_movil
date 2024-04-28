@@ -1,15 +1,16 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:sportapp_movil/constants.dart';
 import 'package:sportapp_movil/services/models/entrenamiento_api_model.dart';
 import 'package:sportapp_movil/services/models/simulator_api_model.dart';
 
 class SimulatorService {
-  Future<SimulatorApiModel?> getAll() async {
+  Future<SimulatorApiModel?> getAll(http.Client client) async {
     print("CALING SIMULATOR SERVICE");
     final url = '$baseUrl/simulator/1';
-    final response = await http.get(
+
+    final response = await client.get(
       Uri.parse(url),
       headers: headers,
     );

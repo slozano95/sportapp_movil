@@ -73,6 +73,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                           borderRadius: BorderRadius.circular(8),
                           color: AppColors.grey),
                       child: TextField(
+                        key: Key("nombre"),
                         controller: nombreController,
                         decoration: const InputDecoration(
                             hintStyle: TextStyle(fontSize: 17),
@@ -91,6 +92,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                         openCalendar();
                       },
                       child: Container(
+                          key: Key("calendar"),
                           padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                           width: double.infinity,
                           height: 40,
@@ -162,7 +164,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        UIComponents.step("-", () {
+                        UIComponents.step("-", "-_$name", () {
                           setState(() {
                             if (counts[name]! > 0) {
                               counts[name] = (counts[name]! - 1);
@@ -173,7 +175,7 @@ class _TrainingExercisesViewState extends State<TrainingExercisesView> {
                         Text(counts[name].toString(),
                             style: AppTypography.body),
                         const SizedBox(width: 10),
-                        UIComponents.step("+", () {
+                        UIComponents.step("+", "+_$name", () {
                           setState(() {
                             counts[name] = (counts[name]! + 1);
                           });

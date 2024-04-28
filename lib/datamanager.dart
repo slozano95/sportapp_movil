@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ffi';
-
+import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sportapp_movil/profile_view.dart';
@@ -28,7 +28,7 @@ class DataManager {
     sendPendingActivities();
   });
   Timer? stravaSyncTimer;
-
+  http.Client _client = http.Client();
   String stravaCode = "";
   String stravaToken = "";
   String stravaRefreshToken = "";
@@ -99,7 +99,7 @@ class DataManager {
 
   Future<SimulatorApiModel?> getHeartRate() async {
     var service = SimulatorService();
-    return await service.getAll();
+    return await service.getAll(_client);
   }
 
   void addPendingActivity(StravaNewActivityApiModel activity) {
@@ -187,5 +187,9 @@ class DataManager {
 
   double calculateImc(double weight, double height) {
     return double.parse((weight / (height * height)).toStringAsFixed(2));
+  }
+
+  void setClient(client) {
+    _client = client;
   }
 }

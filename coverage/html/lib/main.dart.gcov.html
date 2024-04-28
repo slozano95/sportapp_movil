@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">88.9&nbsp;%</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryMed">89.5&nbsp;%</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">17</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-04-25 20:43:59</td>
+            <td class="headerValue">2024-04-27 22:23:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -66,51 +66,57 @@
 <span id="L4"><span class="lineNum">       4</span>              : import 'package:sportapp_movil/datamanager.dart';</span>
 <span id="L5"><span class="lineNum">       5</span>              : import 'package:sportapp_movil/language_selector_view.dart';</span>
 <span id="L6"><span class="lineNum">       6</span>              : import 'package:flutter_gen/gen_l10n/app_localizations.dart';</span>
-<span id="L7"><span class="lineNum">       7</span>              : </span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaUNC tlaBgUNC">           0 : void main() {</span></span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC">           0 :   runApp(const MyApp());</span></span>
-<span id="L10"><span class="lineNum">      10</span>              : }</span>
-<span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span>              : class MyApp extends StatefulWidget {</span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC tlaBgGNC">           2 :   const MyApp({super.key});</span></span>
-<span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :   _MyAppState createState() =&gt; _MyAppState();</span></span>
+<span id="L7"><span class="lineNum">       7</span>              : import 'package:http/http.dart' as http;</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC tlaBgUNC">           0 : void main() {</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC">           0 :   runApp(MyApp(http.Client()));</span></span>
+<span id="L11"><span class="lineNum">      11</span>              : }</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : class MyApp extends StatefulWidget {</span>
+<span id="L14"><span class="lineNum">      14</span>              :   final http.Client client;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC tlaBgGNC">           1 :   MyApp(this.client);</span></span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :   static _MyAppState? of(BuildContext context) =&gt;</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :       context.findAncestorStateOfType&lt;_MyAppState&gt;();</span></span>
-<span id="L20"><span class="lineNum">      20</span>              : }</span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span>              : class _MyAppState extends State&lt;MyApp&gt; {</span>
-<span id="L23"><span class="lineNum">      23</span>              :   Locale _locale = Locale(&quot;es&quot;);</span>
-<span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L26"><span class="lineNum">      26</span>              :   void initState() {</span>
-<span id="L27"><span class="lineNum">      27</span>              :     // TODO: implement initState</span>
-<span id="L28"><span class="lineNum">      28</span>              :     //DataManager().initData();</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :     super.initState();</span></span>
-<span id="L30"><span class="lineNum">      30</span>              :   }</span>
-<span id="L31"><span class="lineNum">      31</span>              : </span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :   void setLocale(Locale value) {</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :     setState(() {</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           1 :       _locale = value;</span></span>
-<span id="L35"><span class="lineNum">      35</span>              :     });</span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L19"><span class="lineNum">      19</span>              :   _MyAppState createState() {</span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           3 :     DataManager().setClient(this.client);</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :     return _MyAppState();</span></span>
+<span id="L22"><span class="lineNum">      22</span>              :   }</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :   static _MyAppState? of(BuildContext context) =&gt;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :       context.findAncestorStateOfType&lt;_MyAppState&gt;();</span></span>
+<span id="L26"><span class="lineNum">      26</span>              : }</span>
+<span id="L27"><span class="lineNum">      27</span>              : </span>
+<span id="L28"><span class="lineNum">      28</span>              : class _MyAppState extends State&lt;MyApp&gt; {</span>
+<span id="L29"><span class="lineNum">      29</span>              :   Locale _locale = Locale(&quot;es&quot;);</span>
+<span id="L30"><span class="lineNum">      30</span>              : </span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L32"><span class="lineNum">      32</span>              :   void initState() {</span>
+<span id="L33"><span class="lineNum">      33</span>              :     // TODO: implement initState</span>
+<span id="L34"><span class="lineNum">      34</span>              :     //DataManager().initData();</span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :     super.initState();</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :   }</span>
 <span id="L37"><span class="lineNum">      37</span>              : </span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L39"><span class="lineNum">      39</span>              :   Widget build(BuildContext context) {</span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           1 :     return MaterialApp(</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           1 :         locale: _locale,</span></span>
-<span id="L42"><span class="lineNum">      42</span>              :         localizationsDelegates: AppLocalizations.localizationsDelegates,</span>
-<span id="L43"><span class="lineNum">      43</span>              :         supportedLocales: AppLocalizations.supportedLocales,</span>
-<span id="L44"><span class="lineNum">      44</span>              :         title: 'Flutter Demo',</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           1 :         theme: ThemeData(</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           1 :           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),</span></span>
-<span id="L47"><span class="lineNum">      47</span>              :           useMaterial3: true,</span>
-<span id="L48"><span class="lineNum">      48</span>              :         ),</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           1 :         home: LanguageSelector());</span></span>
-<span id="L50"><span class="lineNum">      50</span>              :   }</span>
-<span id="L51"><span class="lineNum">      51</span>              : }</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :   void setLocale(Locale value) {</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           2 :     setState(() {</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           1 :       _locale = value;</span></span>
+<span id="L41"><span class="lineNum">      41</span>              :     });</span>
+<span id="L42"><span class="lineNum">      42</span>              :   }</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L45"><span class="lineNum">      45</span>              :   Widget build(BuildContext context) {</span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           1 :     return MaterialApp(</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           1 :         locale: _locale,</span></span>
+<span id="L48"><span class="lineNum">      48</span>              :         localizationsDelegates: AppLocalizations.localizationsDelegates,</span>
+<span id="L49"><span class="lineNum">      49</span>              :         supportedLocales: AppLocalizations.supportedLocales,</span>
+<span id="L50"><span class="lineNum">      50</span>              :         title: 'Flutter Demo',</span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           1 :         theme: ThemeData(</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           1 :           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),</span></span>
+<span id="L53"><span class="lineNum">      53</span>              :           useMaterial3: true,</span>
+<span id="L54"><span class="lineNum">      54</span>              :         ),</span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           1 :         home: LanguageSelector());</span></span>
+<span id="L56"><span class="lineNum">      56</span>              :   }</span>
+<span id="L57"><span class="lineNum">      57</span>              : }</span>
         </pre>
               </td>
             </tr>
