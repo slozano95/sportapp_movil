@@ -66,9 +66,10 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
           child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                     GestureDetector(
                         onTap: () {
                           addCount();
@@ -187,7 +188,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                               //TODO
                             }))
                           ])
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
   }

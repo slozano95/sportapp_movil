@@ -59,9 +59,10 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
       Expanded(
           child: Container(
               padding: const EdgeInsets.all(38),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                     GestureDetector(
                         onTap: () {
                           addCount();
@@ -117,7 +118,7 @@ class _HeartMonitoringState extends State<HeartMonitoring> {
                     (counter % 7 == 0)
                         ? Text(jsonValue?.toJson().toString() ?? "")
                         : SizedBox()
-                  ]))),
+                  ])))),
       UIComponents.tabBar(context, TabItem.home)
     ])));
   }
