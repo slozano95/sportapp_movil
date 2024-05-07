@@ -53,5 +53,11 @@
   "sign_in": "Ingresar",
 
   "heart_start": "Iniciar",
-  "heart_stop": "Finalizar"
+  "heart_stop": "Finalizar",  
+
+  "entr_plan_nutricional_title": "Plan Nutricional",
+  "entr_plan_nutricional_protein": "Proteina",
+  "entr_plan_nutricional_vegetables": "Vegetales",
+  "entr_plan_nutricional_fats": "Grasas Buenas"
+
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/datamanager.dart';
+import 'package:sportapp_movil/nutrition.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/animation_heart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -177,6 +178,7 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
                                 child: UIComponents.button(
                                     AppLocalizations.of(context)!
                                         .entr_plan_nutricional, () {
+                                          goNutrition();
                               // showWaterReminder();
                             })),
                             const SizedBox(height: 34),
@@ -195,6 +197,13 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
   void goBack() {
     stopStopwatch();
     Navigator.of(context).pop();
+  }
+
+    void goNutrition() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Nutrition()),
+    );
   }
 
   void saveSession() {
@@ -361,4 +370,6 @@ class _CurrentSessionViewState extends State<CurrentSessionView> {
       counter++;
     });
   }
+
+
 }
