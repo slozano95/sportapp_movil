@@ -7,7 +7,7 @@ import 'package:sportapp_movil/services/models/simulator_api_model.dart';
 
 class SimulatorService {
   Future<SimulatorApiModel?> getAll(http.Client client) async {
-    print("CALING SIMULATOR SERVICE");
+    print("CALLING SIMULATOR SERVICE");
     final url = '$baseUrl/simulator/1';
 
     final response = await client.get(
