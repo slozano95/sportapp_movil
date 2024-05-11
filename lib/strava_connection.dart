@@ -125,7 +125,7 @@ class _StravaConnectionViewState extends State<StravaConnectionView> {
     if ((code as String) != "") {
       print("CODE FROM STRAVA: $code");
       DataManager().stravaCode = code;
-      StravaService().getToken(false);
+      StravaService().getToken(DataManager().client, false);
       Navigator.pop(context);
       Navigator.push(
         context,

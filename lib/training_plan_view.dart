@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportapp_movil/UI/colors.dart';
 import 'package:sportapp_movil/current_session_view.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/login_view.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:sportapp_movil/schedule_deportologo.dart';
@@ -59,13 +60,15 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-             Text(AppLocalizations.of(context)!.entr_titulo, style: AppTypography.heading),
+                    Text(AppLocalizations.of(context)!.entr_titulo,
+                        style: AppTypography.heading),
                     const SizedBox(height: 40),
                     Row(
                       children: [
                         Expanded(
                             child: activityCell(
-                                AppLocalizations.of(context)!.entr_ciclismo, "assets/plan_ciclismo.png"))
+                                AppLocalizations.of(context)!.entr_ciclismo,
+                                "assets/plan_ciclismo.png"))
                       ],
                     ),
                     const SizedBox(height: 55),
@@ -73,7 +76,8 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
                       children: [
                         Expanded(
                             child: activityCell(
-                                AppLocalizations.of(context)!.entr_atletismo, "assets/plan_atletismo.png"))
+                                AppLocalizations.of(context)!.entr_atletismo,
+                                "assets/plan_atletismo.png"))
                       ],
                     )
                   ])))),
@@ -115,6 +119,7 @@ class _TrainingPlanViewState extends State<TrainingPlanView> {
   }
 
   void signOut() {
+    DataManager().signOut();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),

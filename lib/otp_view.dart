@@ -7,7 +7,6 @@ import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/plan_selector_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sportapp_movil/services/login_service.dart';
-import 'package:sportapp_movil/services/otp_service.dart';
 import 'UI/components.dart';
 
 class OTPView extends StatefulWidget {
@@ -83,13 +82,12 @@ class _OTPViewState extends State<OTPView> {
   }
 
   void onContinue() async {
-    http.Client _client = http.Client();
     if (otpController.text != "") {
-      var service = OTPService();
-      var wasSuccesfull = await service.sendOtp(
-          _client, widget.email, widget.session, otpController.text);
+      var service = SecurityService();
+      var wasSuccesfull = await service.sendOtp(DataManager().client,
+          widget.email, widget.session, otpController.text);
       if (wasSuccesfull) {
-        // DataManager().setSession(session);
+        DataManager().initData();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => PlanSelector()),

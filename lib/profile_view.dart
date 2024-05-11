@@ -162,6 +162,7 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   void signOut() {
+    DataManager().signOut();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),

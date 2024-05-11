@@ -70,6 +70,7 @@ class _SincronizeViewState extends State<SincronizeView> {
   }
 
   void signOut() {
+    DataManager().signOut();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),

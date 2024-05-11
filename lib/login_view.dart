@@ -19,87 +19,100 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   var userController = TextEditingController();
   var pwdController = TextEditingController();
+  bool loginNeeded = false;
+  @override
+  void initState() {
+    tryToLogin();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
             child: Column(children: [
       UIComponents.navBar(),
-      Container(
-          padding: const EdgeInsets.all(38),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SizedBox(height: 120),
-            Text(
-              AppLocalizations.of(context)!.user,
-              style: const TextStyle(fontSize: 16),
-            ),
-            Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColors.grey),
-              child: TextField(
-                key: const Key("user"),
-                controller: userController,
-                decoration: const InputDecoration(
-                    hintStyle: TextStyle(fontSize: 17),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
-              ),
-            ),
-            const SizedBox(height: 30),
-            Text(
-              AppLocalizations.of(context)!.password,
-              style: const TextStyle(fontSize: 16),
-            ),
-            Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColors.grey),
-              child: TextField(
-                controller: pwdController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    hintStyle: TextStyle(fontSize: 17),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
-              ),
-            ),
-            const SizedBox(height: 50),
-            Center(
-                child: UIComponents.button(
-                    AppLocalizations.of(context)!.sign_in, () {
-              onSignIn();
-            }))
-          ]))
+      loginNeeded ? loginForm() : loadingView()
     ])));
+  }
+
+  Widget loadingView() {
+    return Expanded(
+        child: Container(
+            child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+          CircularProgressIndicator(),
+          SizedBox(height: 20),
+          Text("Iniciando sesión...")
+        ]))));
+  }
+
+  Widget loginForm() {
+    return Container(
+        padding: const EdgeInsets.all(38),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 120),
+          Text(
+            AppLocalizations.of(context)!.user,
+            style: const TextStyle(fontSize: 16),
+          ),
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8), color: AppColors.grey),
+            child: TextField(
+              key: const Key("user"),
+              controller: userController,
+              decoration: const InputDecoration(
+                  hintStyle: TextStyle(fontSize: 17),
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
+            ),
+          ),
+          const SizedBox(height: 30),
+          Text(
+            AppLocalizations.of(context)!.password,
+            style: const TextStyle(fontSize: 16),
+          ),
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8), color: AppColors.grey),
+            child: TextField(
+              controller: pwdController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                  hintStyle: TextStyle(fontSize: 17),
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
+            ),
+          ),
+          const SizedBox(height: 50),
+          Center(
+              child: UIComponents.button(AppLocalizations.of(context)!.sign_in,
+                  () {
+            onSignIn();
+          }))
+        ]));
   }
 
   void onSignIn() async {
     userController.text = "slozano95@gmail.com";
     pwdController.text = "Colombia2024@@";
 
-    http.Client _client = http.Client();
     if (userController.text != "" && pwdController.text != "") {
-      var service = LoginService();
-      var session =
-          await service.login(_client, userController.text, pwdController.text);
+      var service = SecurityService();
+      var session = await service.login(
+          DataManager().client, userController.text, pwdController.text);
       if (session != null) {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => OTPView(
-                    session: session,
-                    email: userController.text,
-                  )),
+              builder: (context) =>
+                  OTPView(session: session, email: userController.text)),
         );
-        // DataManager().setSession(session);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => PlanSelector()),
-        // );
       } else {
         showError();
       }
@@ -112,8 +125,8 @@ class _LoginViewState extends State<LoginView> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Error"),
-            content: Text("Usuario o contraseña incorrectos"),
+            title: const Text("Error"),
+            content: const Text("Usuario o contraseña incorrectos"),
             actions: [
               TextButton(
                 onPressed: () {
@@ -125,6 +138,31 @@ class _LoginViewState extends State<LoginView> {
           );
         },
       );
+    }
+  }
+
+  void tryToLogin() async {
+    await DataManager().readSessionData();
+    var loginExpiresAt = DataManager().loginExpiresAt;
+    var now = DateTime.now().millisecondsSinceEpoch;
+    print(loginExpiresAt);
+    print(now);
+    if (loginExpiresAt == 0) {
+      //NOT LOGGED IN
+      setState(() {
+        loginNeeded = true;
+      });
+    } else if (loginExpiresAt > now) {
+      //LOGGED IN
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PlanSelector()),
+      );
+    } else {
+      //REFRESH TOKEN
+      setState(() {
+        loginNeeded = true;
+      });
     }
   }
 }

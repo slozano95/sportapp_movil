@@ -5,9 +5,9 @@ import 'package:sportapp_movil/services/models/entrenamiento_completado_api_mode
 import 'package:sportapp_movil/services/models/eventos_api_model.dart';
 
 class EventosService {
-  Future<List<EventosApiModel>> getAll() async {
+  Future<List<EventosApiModel>> getAll(http.Client client) async {
     final url = '$baseUrl/eventos/user/$id_user';
-    final response = await http.get(
+    final response = await client.get(
       Uri.parse(url),
       headers: headers,
     );
@@ -24,11 +24,11 @@ class EventosService {
     }
   }
 
-  Future<int> getAsistidos() async {
+  Future<int> getAsistidos(http.Client client) async {
     var diasAtras = DateTime.now().day;
     diasAtras = 30;
     final url = '$baseUrl/eventos/user/asistio/$id_user/$diasAtras';
-    final response = await http.get(
+    final response = await client.get(
       Uri.parse(url),
       headers: headers,
     );

@@ -5,9 +5,9 @@ import 'package:sportapp_movil/constants.dart';
 import 'package:sportapp_movil/services/models/exercises_api_model.dart';
 
 class ExercisesService {
-  Future<List<ExercisesApiModel>> getAll() async {
+  Future<List<ExercisesApiModel>> getAll(http.Client client) async {
     final url = '${baseUrl}/ejercicios/all';
-    final response = await http.get(
+    final response = await client.get(
       Uri.parse(url),
       headers: headers,
     );
