@@ -63,11 +63,19 @@ class SecurityService {
       http.Client client, accessToken, refreshToken, expiresIn) async {
     print("CALLING ME SERVICE");
     final url = '$baseUrl/security/me';
-    final response = await client.get(Uri.parse(url), headers: headers);
+    var header = {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $accessToken"
+    };
+    final response = await client.get(Uri.parse(url), headers: header);
     if (response.statusCode == 200) {
       //LOGIN OK
       var userId = json.decode(response.body)["Username"];
-      DataManager().setSession(accessToken, refreshToken, expiresIn, userId);
+      print(userId);
+      print(json.decode(response.body));
+      await DataManager()
+          .setSession(accessToken, refreshToken, expiresIn, userId);
+      await DataManager().readSessionData();
       return;
     } else {
       //FAILED

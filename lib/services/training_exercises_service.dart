@@ -7,7 +7,7 @@ class TrainingExercisesService {
   Future<bool> callCreate(
       String nombre, String fecha, Map<String, int> exerciseCount) async {
     Map<String, dynamic> data = {};
-    data['id_usuario'] = id_user;
+    data['id_usuario'] = DataManager().getUserId();
     data['estado'] = true;
     data['nombre'] = nombre;
     data['fecha_entrenamiento'] = fecha;

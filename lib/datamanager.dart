@@ -26,7 +26,7 @@ class DataManager {
   List<StravaNewActivityApiModel> allPendingActivities = [];
   List<StravaNewActivityApiModel> stravaActivities = [];
   ProfileData? profileData = ProfileData();
-  Timer? stravaTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
+  Timer? stravaTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
     sendPendingActivities();
   });
   Timer? stravaSyncTimer;
@@ -232,5 +232,10 @@ class DataManager {
     loginAccessToken = "";
     loginRefreshToken = "";
     loginExpiresAt = 0;
+  }
+
+  String getUserId() {
+    print("BLA");
+    return userId;
   }
 }

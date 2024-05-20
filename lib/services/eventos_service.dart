@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:sportapp_movil/constants.dart';
+import 'package:sportapp_movil/datamanager.dart';
 import 'package:sportapp_movil/services/models/entrenamiento_completado_api_model.dart';
 import 'package:sportapp_movil/services/models/eventos_api_model.dart';
 
 class EventosService {
   Future<List<EventosApiModel>> getAll(http.Client client) async {
-    final url = '$baseUrl/eventos/user/$id_user';
+    final url = '$baseUrl/eventos/user/${DataManager().getUserId()}';
     final response = await client.get(
       Uri.parse(url),
       headers: headers,
@@ -27,7 +28,8 @@ class EventosService {
   Future<int> getAsistidos(http.Client client) async {
     var diasAtras = DateTime.now().day;
     diasAtras = 30;
-    final url = '$baseUrl/eventos/user/asistio/$id_user/$diasAtras';
+    final url =
+        '$baseUrl/eventos/user/asistio/${DataManager().getUserId()}/$diasAtras';
     final response = await client.get(
       Uri.parse(url),
       headers: headers,

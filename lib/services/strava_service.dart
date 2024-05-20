@@ -54,16 +54,20 @@ class StravaService {
     const url = 'https://www.strava.com/api/v3/activities';
     var headers2 = headers;
     headers2['Authorization'] = 'Bearer ${DataManager().stravaToken}';
-
-    final response = await client.post(Uri.parse(url),
-        headers: headers2, body: json.encode(model.toJson()));
-    print(response.body);
-    if (response.statusCode == 201) {
-      print("REMOVE ACTIVITY ${model.id}");
-      // DataManager().allPendingActivities.remove(model);
-      return true;
-    } else {
-      print("6Request failed with status: ${response.statusCode}");
+    try {
+      final response = await client.post(Uri.parse(url),
+          headers: headers2, body: json.encode(model.toJson()));
+      print(response.body);
+      if (response.statusCode == 201) {
+        print("REMOVE ACTIVITY ${model.id}");
+        // DataManager().allPendingActivities.remove(model);
+        return true;
+      } else {
+        print("6Request failed with status: ${response.statusCode}");
+        return false;
+      }
+    } catch (e) {
+      print("CANT SEND ACTIVITY TO STRAVA, WILL RETRY FROM CACHE LATER");
       return false;
     }
   }
@@ -72,18 +76,20 @@ class StravaService {
     const url = 'https://www.strava.com/api/v3/athlete/activities?per_page=100';
     var headers2 = headers;
     headers2['Authorization'] = 'Bearer ${DataManager().stravaToken}';
+    try {
+      final response = await client.get(Uri.parse(url), headers: headers2);
+      print(response.body);
 
-    final response = await client.get(Uri.parse(url), headers: headers2);
-    print(response.body);
-    if (response.statusCode == 200) {
-      var data = List<StravaNewActivityApiModel>.from(json
-          .decode(response.body)
-          .map((x) => StravaNewActivityApiModel.fromJson(x)));
-      DataManager().stravaActivities = data;
-      return;
-    } else {
-      print("7Request failed with status: ${response.statusCode}");
-      return;
-    }
+      if (response.statusCode == 200) {
+        var data = List<StravaNewActivityApiModel>.from(json
+            .decode(response.body)
+            .map((x) => StravaNewActivityApiModel.fromJson(x)));
+        DataManager().stravaActivities = data;
+        return;
+      } else {
+        print("7Request failed with status: ${response.statusCode}");
+        return;
+      }
+    } catch (e) {}
   }
 }
