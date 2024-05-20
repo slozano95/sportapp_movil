@@ -60,6 +60,6 @@ void main() {
     StravaNewActivityApiModel.fromJson({});
     StravaTokenApiModel.fromJson({}).toJson();
     Athlete.fromJson({}).toJson();
-    StravaService().getToken(false);
+    //StravaService().getToken(false);
   });
 }

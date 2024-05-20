@@ -109,7 +109,7 @@ void main() {
     DataManager().stravaCode = "123";
     DataManager().stravaToken = "bla";
     DataManager().stravaRefreshToken = "bla";
-    DataManager().expiresAt =
+    DataManager().stravaExpiresAt =
         DateTime.now().add(Duration(days: 1)).millisecondsSinceEpoch;
     await tester.tap(find.textContaining("Plan Entrenamiento"));
     await tester.pumpAndSettle();
@@ -171,7 +171,7 @@ void main() {
     DataManager().stravaCode = "123";
     DataManager().stravaToken = "bla";
     DataManager().stravaRefreshToken = "bla";
-    DataManager().expiresAt =
+    DataManager().stravaExpiresAt =
         DateTime.now().add(Duration(days: 1)).millisecondsSinceEpoch;
     await tester.tap(find.byKey(const Key("book_navbar_button")));
     await tester.pumpAndSettle();

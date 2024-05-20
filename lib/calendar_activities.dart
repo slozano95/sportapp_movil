@@ -227,6 +227,7 @@ class _CalendarActivitiesState extends State<CalendarActivities> {
   }
 
   void signOut() {
+    DataManager().signOut();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),

@@ -9,7 +9,8 @@ import 'package:sportapp_movil/services/models/strava_new_activity_api_model.dar
 import 'package:sportapp_movil/services/models/strava_token_api_model.dart';
 
 class StravaService {
-  Future<StravaTokenApiModel?> getToken(bool shouldRefreshToken) async {
+  Future<StravaTokenApiModel?> getToken(
+      http.Client client, bool shouldRefreshToken) async {
     const url = 'https://www.strava.com/oauth/token';
     var body = json.encode({
       'client_id': '125569',
@@ -27,19 +28,19 @@ class StravaService {
     }
     print(body);
     final response =
-        await http.post(Uri.parse(url), headers: headers, body: body);
+        await client.post(Uri.parse(url), headers: headers, body: body);
 
     if (response.statusCode == 200) {
       var data = StravaTokenApiModel.fromJson(json.decode(response.body));
       DataManager().stravaToken = data.accessToken ?? "";
       DataManager().stravaRefreshToken = data.refreshToken ?? "";
-      DataManager().expiresAt = data.expiresAt ?? 0;
+      DataManager().stravaExpiresAt = data.expiresAt ?? 0;
       DataManager().saveData();
       DateTime now = DateTime.now();
 
       int epochTime = now.millisecondsSinceEpoch ~/ 1000;
       print('Epoch time: $epochTime');
-      print('Expire epoch time: ${DataManager().expiresAt}');
+      print('Expire epoch time: ${DataManager().stravaExpiresAt}');
       return data;
     } else {
       print("5Request failed with status: ${response.statusCode}");
@@ -47,41 +48,48 @@ class StravaService {
     }
   }
 
-  Future<bool> addActivity(StravaNewActivityApiModel model) async {
+  Future<bool> addActivity(
+      http.Client client, StravaNewActivityApiModel model) async {
     print("SENDING ACTIVITY ${model.id}");
     const url = 'https://www.strava.com/api/v3/activities';
     var headers2 = headers;
     headers2['Authorization'] = 'Bearer ${DataManager().stravaToken}';
-
-    final response = await http.post(Uri.parse(url),
-        headers: headers2, body: json.encode(model.toJson()));
-    print(response.body);
-    if (response.statusCode == 201) {
-      print("REMOVE ACTIVITY ${model.id}");
-      // DataManager().allPendingActivities.remove(model);
-      return true;
-    } else {
-      print("6Request failed with status: ${response.statusCode}");
+    try {
+      final response = await client.post(Uri.parse(url),
+          headers: headers2, body: json.encode(model.toJson()));
+      print(response.body);
+      if (response.statusCode == 201) {
+        print("REMOVE ACTIVITY ${model.id}");
+        // DataManager().allPendingActivities.remove(model);
+        return true;
+      } else {
+        print("6Request failed with status: ${response.statusCode}");
+        return false;
+      }
+    } catch (e) {
+      print("CANT SEND ACTIVITY TO STRAVA, WILL RETRY FROM CACHE LATER");
       return false;
     }
   }
 
-  Future<void> getActivities() async {
+  Future<void> getActivities(http.Client client) async {
     const url = 'https://www.strava.com/api/v3/athlete/activities?per_page=100';
     var headers2 = headers;
     headers2['Authorization'] = 'Bearer ${DataManager().stravaToken}';
+    try {
+      final response = await client.get(Uri.parse(url), headers: headers2);
+      print(response.body);
 
-    final response = await http.get(Uri.parse(url), headers: headers2);
-    print(response.body);
-    if (response.statusCode == 200) {
-      var data = List<StravaNewActivityApiModel>.from(json
-          .decode(response.body)
-          .map((x) => StravaNewActivityApiModel.fromJson(x)));
-      DataManager().stravaActivities = data;
-      return;
-    } else {
-      print("7Request failed with status: ${response.statusCode}");
-      return;
-    }
+      if (response.statusCode == 200) {
+        var data = List<StravaNewActivityApiModel>.from(json
+            .decode(response.body)
+            .map((x) => StravaNewActivityApiModel.fromJson(x)));
+        DataManager().stravaActivities = data;
+        return;
+      } else {
+        print("7Request failed with status: ${response.statusCode}");
+        return;
+      }
+    } catch (e) {}
   }
 }

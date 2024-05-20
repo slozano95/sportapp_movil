@@ -196,6 +196,7 @@ class _PlanSelectorState extends State<PlanSelector> {
   }
 
   void signOut() {
+    DataManager().signOut();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginView()),
